@@ -1,0 +1,41 @@
+
+1 | 1708925216169 | pages.BankEazyApp | pages.BankEazyApp | main
+
+WELCOME TO BANKEAZY BANK!!!
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1708925218453 | pages.BankEazyApp | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1708925219310 | pages.BankEazyApp | pages.LoginPage | run
+Enter password : 
+
+1 | 1708925221027 | pages.BankEazyApp | pages.AdminPage | run
+1) Add Employee
+2) Add Customer
+3) Add Account
+4) Edit User
+5) View Employee List
+6) View Customer List
+7) View Transaction Details
+8) View Profile
+9) Edit Profile
+10) Logout
+
+1 | 1708925237554 | pages.BankEazyApp | pages.AdminPage | run
+Admin want to add employee!
+
+1 | 1708925237554 | pages.BankEazyApp | pages.AdminPage | run
+1) Add Employee
+2) Add Customer
+3) Add Account
+4) Edit User
+5) View Employee List
+6) View Customer List
+7) View Transaction Details
+8) View Profile
+9) Edit Profile
+10) Logout

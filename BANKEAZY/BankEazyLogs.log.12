@@ -1,0 +1,28 @@
+
+1 | 1708922966777 | pages.BankEazyApp | pages.BankEazyApp | main
+
+WELCOME TO BANKEAZY BANK!!!
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1708922968470 | pages.BankEazyApp | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1708922969276 | pages.BankEazyApp | pages.LoginPage | run
+Enter password : 
+
+1 | 1708922971270 | pages.BankEazyApp | pages.BankEazyApp | main
+Exception Occurred 
+
+1 | 1708923102109 | pages.BankEazyApp | pages.BankEazyApp | main
+
+WELCOME TO BANKEAZY BANK!!!
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1708923104435 | pages.BankEazyApp | pages.LoginPage | run
+Enter User Id : 
