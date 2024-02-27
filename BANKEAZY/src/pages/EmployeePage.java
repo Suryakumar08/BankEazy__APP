@@ -3,7 +3,8 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.EmployeePageHelper;
+import helpers.EmployeeHelper;
+import model.Employee;
 import utilities.InputHelper;
 
 public class EmployeePage {
@@ -11,8 +12,9 @@ public class EmployeePage {
 	private static Logger logger = BankEazyApp.logger;
 
 	public static void run(int userId) throws CustomBankException {
-		EmployeePageHelper helper = new EmployeePageHelper();
-		int empRole = helper.getEmployeeRole(userId);
+		EmployeeHelper helper = new EmployeeHelper();
+		Employee currEmployee = helper.getEmployee(userId);
+		int empRole = currEmployee.getRole(1);
 			boolean continueProgram = true;
 			while (continueProgram) {
 				logger.info(
@@ -23,19 +25,26 @@ public class EmployeePage {
 					case 1: {
 						if(empRole == 1) {
 							int newUserId = AddEmployeePage.run();
-							logger.info("Employee Added Successfully!\nAdded User's Id : " + newUserId + "\n\n");
+							logger.fine("Employee Added Successfully!\nAdded User's Id : " + newUserId + "\n\n");
 						}
 						else {
-							logger.info("Only Admins Have the Permission to add Employees!");
+							logger.fine("Only Admins Have the Permission to add Employees!");
 						}
 						break;
 					}
 					case 2: {
-						logger.info("Admin-add customer");
-						break;
+						int newUserId = AddCustomerPage.run();
+						logger.fine("Customer created successfully!\nCreated Customer Id : " + newUserId + "\n\n");
 					}
 					case 3: {
-						logger.info("Admin add customer account");
+						long accNo = 0l;
+						if(empRole == 1) {
+							accNo = AddAccountPage.run(0);
+						}
+						else {
+							accNo = AddAccountPage.run(currEmployee.getBranchId());
+						}
+						logger.fine("Account created successfully!\nAccount number : " + accNo);
 						break;
 					}
 					case 4: {
@@ -68,7 +77,7 @@ public class EmployeePage {
 						break;
 					}
 					default: {
-						logger.info("Give valid choice!");
+						logger.severe("Give valid choice!");
 						break;
 					}
 					}

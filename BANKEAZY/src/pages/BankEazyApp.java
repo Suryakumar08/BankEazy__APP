@@ -15,18 +15,17 @@ import utilities.customLogFileFormatter;
 
 public class BankEazyApp {
 
-	public static Logger logger = Logger.getLogger(BankEazyApp.class.getName());
+	public static Logger logger = Logger.getGlobal();
 
 	public static void main(String[] args) {
-
 		setLoggerProperties();
-
 		try {
 			boolean continueProgram = true;
 			try {
 				while (continueProgram) {
+					logger.fine("-----------Welcome to BankEazy Bank------------");
 					logger.info(
-							"\nWELCOME TO BANKEAZY BANK!!!\n1)Login\nAny other digit)Exit\n\nEnter your option to proceed : ");
+							"\n1)Login\nAny other digit)Exit\n\nEnter your option to proceed : ");
 					int userChoice = InputHelper.getInt();
 					switch (userChoice) {
 					case 1: {
@@ -37,7 +36,7 @@ public class BankEazyApp {
 					default: {
 						JDBCConnector.closeConnection();
 						ScannerHelper.closeScanner();
-						logger.info("Thanks you! Come again!!");
+						logger.fine("Thanks you! Come again!!");
 						continueProgram = false;
 						break;
 					}
@@ -54,15 +53,18 @@ public class BankEazyApp {
 	}
 
 	public static void setLoggerProperties() {
-		logger.setUseParentHandlers(false);
 		try {
+			
 			FileHandler fileHandler = new FileHandler("BankEazyLogs.log", true);
 			fileHandler.setFormatter(new customLogFileFormatter());
 			logger.addHandler(fileHandler);
 			ConsoleHandler consoleHandler = new ConsoleHandler();
 			consoleHandler.setFormatter(new customConsoleLogFormatter());
+			consoleHandler.setLevel(Level.ALL);
 			logger.addHandler(consoleHandler);
+			logger.setUseParentHandlers(false);
 			logger.setLevel(Level.ALL);
+
 		} catch (SecurityException | IOException e) {
 			System.out.println("Some error occurred : " + e.getMessage() + "\nCause : " + e.getCause());
 		}

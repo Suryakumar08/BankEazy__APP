@@ -1,5 +1,8 @@
 
-1 | 1708941467593 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1708970562183 | global | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970562212 | global | pages.BankEazyApp | main
 
 WELCOME TO BANKEAZY BANK!!!
 1)Login
@@ -7,39 +10,5 @@ Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708941469452 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708941470334 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708941472340 | pages.BankEazyApp | pages.AdminPage | run
-Hey Admin!!!
-1) Add Employee
-2) Add Customer
-3) Add Customer Account
-4) Edit User
-5) View Employee List
-6) View Customer List
-7) View Transaction Details
-8) View Profile
-9) Edit Profile
-10) Logout
-
-Enter your choice : 
-
-
-1 | 1708941475075 | pages.BankEazyApp | pages.AdminPage | run
-Admin want to add employee!
-
-1 | 1708941475077 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter name :
-
-1 | 1708941483397 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter password :
-
-1 | 1708941491495 | pages.BankEazyApp | pages.AddEmployeePage | run
-Invalid password! Give strong password!!!
-
-1 | 1708941491496 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter name :
+1 | 1709023150917 | global | pages.BankEazyApp | main
+Exception Occurred 

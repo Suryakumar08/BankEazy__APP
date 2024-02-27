@@ -1,5 +1,8 @@
 
-1 | 1708843701668 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1708970096175 | pages.BankEazyApp | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970096203 | pages.BankEazyApp | pages.BankEazyApp | main
 
 WELCOME TO BANKEAZY BANK!!!
 1)Login
@@ -7,5 +10,16 @@ Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708843703676 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
+1 | 1708970399250 | global | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970399279 | global | pages.BankEazyApp | main
+
+WELCOME TO BANKEAZY BANK!!!
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709023150703 | global | pages.BankEazyApp | main
+Exception Occurred 

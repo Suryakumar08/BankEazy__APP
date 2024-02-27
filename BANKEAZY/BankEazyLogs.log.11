@@ -1,5 +1,8 @@
 
-1 | 1708843952002 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1708970153805 | pages.BankEazyApp | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970153838 | pages.BankEazyApp | pages.BankEazyApp | main
 
 WELCOME TO BANKEAZY BANK!!!
 1)Login
@@ -7,24 +10,13 @@ Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708843953935 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708843954705 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708843959094 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708843959094 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1708970185715 | pages.BankEazyApp | pages.BankEazyApp | main
 Exception Occurred 
 
-1 | 1708853299554 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1708970403244 | global | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970403276 | global | pages.BankEazyApp | main
 
 WELCOME TO BANKEAZY BANK!!!
 1)Login
@@ -32,41 +24,5 @@ Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708853301762 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708853302513 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708853304360 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708853304360 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709023150725 | global | pages.BankEazyApp | main
 Exception Occurred 
-
-1 | 1708853405557 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708853407168 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708853407622 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708853409185 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 

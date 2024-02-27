@@ -93,7 +93,6 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 				try (ResultSet genKeys = statement.getGeneratedKeys()) {
 					while (genKeys.next()) {
 						newId = genKeys.getInt(1);
-						System.out.println("In EmployeeDao : " + newId);
 					}
 				}
 
@@ -123,4 +122,5 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 		return newId;
 
 	}
+
 }

@@ -1,5 +1,8 @@
 
-1 | 1708943143399 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1708970604468 | global | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970604500 | global | pages.BankEazyApp | main
 
 WELCOME TO BANKEAZY BANK!!!
 1)Login
@@ -7,57 +10,5 @@ Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708943145119 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708943160195 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708943162070 | pages.BankEazyApp | pages.AdminPage | run
-Hey Admin!!!
-1) Add Employee
-2) Add Customer
-3) Add Customer Account
-4) Edit User
-5) View Employee List
-6) View Customer List
-7) View Transaction Details
-8) View Profile
-9) Edit Profile
-10) Logout
-
-Enter your choice : 
-
-
-1 | 1708943163241 | pages.BankEazyApp | pages.AdminPage | run
-Admin want to add employee!
-
-1 | 1708943163243 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter name :
-
-1 | 1708943165950 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter password :
-
-1 | 1708943170082 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter mobile no :
-
-1 | 1708943173019 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter gender :
-
-1 | 1708943175211 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter Date of Birth in format(dd-MM-yyyy) :
-
-1 | 1708943184006 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter Employee salary : 
-
-1 | 1708943188188 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter branch Id : 
-
-1 | 1708943189448 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter Employee role(1 -> Admin 2 -> Employee) : 
-
-1 | 1708943191366 | pages.BankEazyApp | pages.AddEmployeePage | run
-ERROR OCCURRED! Please try again after sometime!
-
-1 | 1708943191367 | pages.BankEazyApp | pages.AddEmployeePage | run
-Enter name :
+1 | 1709023151099 | global | pages.BankEazyApp | main
+Exception Occurred 

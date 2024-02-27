@@ -329,3 +329,31 @@ Enter your option to proceed :
 
 1 | 1708684270227 | pages.BankEazyApp | pages.LoginPage | run
 Enter User Id : 
+
+1 | 1708952080946 | pages.BankEazyApp | pages.BankEazyApp | main
+
+WELCOME TO BANKEAZY BANK!!!
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1708970184923 | pages.BankEazyApp | pages.BankEazyApp | main
+Exception Occurred 
+
+1 | 1708970185453 | pages.BankEazyApp | pages.BankEazyApp | main
+Exception Occurred 
+
+1 | 1708970269701 | global | pages.BankEazyApp | main
+qwertyuio
+
+1 | 1708970269736 | global | pages.BankEazyApp | main
+
+WELCOME TO BANKEAZY BANK!!!
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709023150510 | global | pages.BankEazyApp | main
+Exception Occurred 
