@@ -3,7 +3,7 @@ package model;
 public class Employee extends User {
 	private int id;
 	private int salary;
-	private long joinedDate;
+	private long joiningDate;
 	private int branchId;
 	private int role;		//1 -> Admin, 2 -> Employee
 	
@@ -19,11 +19,11 @@ public class Employee extends User {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public long getJoinedDate() {
-		return joinedDate;
+	public long getJoiningDate() {
+		return joiningDate;
 	}
-	public void setJoinedDate(long joinedDate) {
-		this.joinedDate = joinedDate;
+	public void setJoiningDate(long joinedDate) {
+		this.joiningDate = joinedDate;
 	}
 	public int getBranchId() {
 		return branchId;
@@ -51,8 +51,8 @@ public class Employee extends User {
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\nEmployee [id=" + id + ", salary=" + salary + ", joinedDate=" + joinedDate + ", branchId=" + branchId
-				+ ", role=" + role + "]";
+		return super.toString() + "Employee [salary=" + salary + "\njoinedDate=" + joiningDate + "\nbranchId=" + branchId
+				+ "\nrole=" + role + "]\n";
 	}
 	
 	

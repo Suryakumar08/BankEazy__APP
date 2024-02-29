@@ -12,7 +12,7 @@ import utilities.Validators;
 public class AddEmployeePage {
 	private static Logger logger = BankEazyApp.logger;
 
-	public static int run() {
+	public static int run() throws CustomBankException{
 		int newlyAddedId = -1;
 		EmployeeHelper helper = new EmployeeHelper();
 		while (true) {
@@ -55,7 +55,7 @@ public class AddEmployeePage {
 				employee.setGender(gender);
 				employee.setDob(dob);
 				employee.setSalary(salary);
-				employee.setJoinedDate(Utilities.getCurrentTime());
+				employee.setJoiningDate(Utilities.getCurrentTime());
 				employee.setBranchId(branchId);
 				employee.setRole(role);
 

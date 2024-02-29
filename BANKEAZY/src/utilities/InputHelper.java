@@ -14,14 +14,32 @@ public class InputHelper {
 			scanner.nextLine();
 			return integer;
 		} catch (InputMismatchException ex) {
+			scanner.nextLine();
 			throw new CustomBankException(CustomBankException.GIVE_PROPER_INPUT);
 		}
 	}
 
-	public static double getDouble() {
-		double doubleValue = scanner.nextDouble();
-		scanner.nextLine();
-		return doubleValue;
+	public static long getLong() throws CustomBankException{
+		try {
+			long longValue = scanner.nextLong();
+			scanner.nextLine();
+			return longValue;
+		}catch(InputMismatchException ex) {
+			scanner.nextLine();
+			throw new CustomBankException(CustomBankException.GIVE_PROPER_INPUT);
+		}
+	}
+	
+	
+	public static double getDouble() throws CustomBankException{
+		try {
+			double doubleValue = scanner.nextDouble();
+			scanner.nextLine();
+			return doubleValue;
+		}catch(InputMismatchException ex) {
+			scanner.nextLine();
+			throw new CustomBankException(CustomBankException.GIVE_PROPER_INPUT);
+		}
 	}
 
 	public static String getString() {

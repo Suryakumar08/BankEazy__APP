@@ -11,4 +11,8 @@ public interface AccountDaoInterface {
 
 	public Map<Integer, Account> getAccounts(int userId) throws CustomBankException;
 
+	public Account getAccount(long accNo) throws CustomBankException;
+
+	public boolean updateAccount(Account account) throws CustomBankException;
+
 }

@@ -14,10 +14,10 @@ import model.Account;
 
 public class AccountDAO implements AccountDaoInterface {
 	private Connection connection = null;
-	StringBuilder addAccountQuery = new StringBuilder(
-			"Insert into Account(customerId, balance, branchId, status) values(?, ?, ?, ?)");
-	StringBuilder selectAccountsQuery = new StringBuilder(
-			"Select accountNo, customerId, balance, branchId, status from Account where ");
+	private String addAccountQuery = 
+			"Insert into Account(customerId, balance, branchId, status) values(?, ?, ?, ?)";
+	private String selectAccountsQuery = 
+			"Select accountNo, customerId, balance, branchId, status from Account where ";
 
 	public AccountDAO() throws CustomBankException {
 		connection = JDBCConnector.getConnection();
@@ -60,27 +60,76 @@ public class AccountDAO implements AccountDaoInterface {
 			statement.setObject(1, userId);
 			try (ResultSet accounts = statement.executeQuery()) {
 				while (accounts.next()) {
-					long accountNo = accounts.getLong("accountNo");
-					int customerId = accounts.getInt("customerId");
-					double balance = accounts.getDouble("balance");
-					int branchId = accounts.getInt("branchId");
-					int status = accounts.getInt("status");
-
-					Account account = new Account();
-					account.setAccountNo(accountNo);
-					account.setCustomerId(customerId);
-					account.setBalance(balance);
-					account.setBranchId(branchId);
-					account.setStatus(status);
-
+					Account account = null;
+					account = new DAOHelper().mapResultSetToGivenClassObject(accounts, Account.class);
 					accountMap.put(++noOfAccounts, account);
 				}
 			}
 			return accountMap;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
+	
+	public StringBuilder getUpdateQuery(Account account) {
+		StringBuilder query = new StringBuilder("update Account ");
+		if(account.getBalance() != -1) {
+			query.append("set balance = ?, ");
+		}
+		if(account.getBranchId() != -1) {
+			query.append("set branchId = ?, ");
+		}
+		if(account.getStatus() != -1) {
+			query.append("set status = ?, ");
+		}
+		query.delete(query.length() - 2, query.length());
+		return query;
+	}
+	
+	@Override
+	public boolean updateAccount(Account account) throws CustomBankException {
+		StringBuilder query = getUpdateQuery(account);
+		query.append(" where accountNo = ?");
+		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
+			int index = 0;
+			if(account.getBalance() != -1) {
+				statement.setDouble(++index, account.getBalance());
+			}
+			if(account.getBranchId() != -1) {
+				statement.setInt(++index, account.getBranchId());
+			}
+			if(account.getStatus() != -1) {
+				statement.setInt(++index, account.getStatus());
+			}
+			statement.setLong(++index, account.getAccountNo());
+			
+			int noOfRowsAffected = statement.executeUpdate();
+			
+			if(noOfRowsAffected == 0) {
+				return false;
+			}
+			return true;
+		} catch (SQLException e) {
+			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
+		}
+	}
+
+	@Override
+	public Account getAccount(long accNo) throws CustomBankException{
+		Account account = null;
+		StringBuilder query = new StringBuilder(selectAccountsQuery).append("accountNo = ?");
+		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
+			statement.setLong(1, accNo);
+			try(ResultSet accountSet = statement.executeQuery()){
+				if(accountSet.next()) {
+					account = new DAOHelper().mapResultSetToGivenClassObject(accountSet, Account.class);
+				}
+			}
+			return account;
+		} catch (SQLException e) {
+			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
+		}
+	}
+
 
 }

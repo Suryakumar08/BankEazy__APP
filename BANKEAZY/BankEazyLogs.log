@@ -1,359 +1,184 @@
 
-1 | 1708430875717 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709039172598 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
 
-WELCOME TO BANKEAZY BANK!!!
+1 | 1709039172645 | global | pages.BankEazyApp | main
+
 1)Login
 Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708430879006 | pages.BankEazyApp | pages.LoginPage | run
+1 | 1709039175449 | global | pages.LoginPage | run
 Enter User Id : 
 
-1 | 1708430879081 | pages.BankEazyApp | pages.LoginPage | run
+1 | 1709039271730 | global | pages.LoginPage | run
 Enter password : 
 
-1 | 1708430879355 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
+1 | 1709039292898 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
 
-1 | 1708430879355 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709039292905 | global | pages.CustomerPage | run
+Select Account : 
 
-WELCOME TO BANKEAZY BANK!!!
+1 | 1709039292905 | global | pages.CustomerPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709039292924 | global | pages.CustomerPage | printAccounts
+1                          Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709039292925 | global | pages.CustomerPage | printAccounts
+2                          Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709039318671 | global | pages.CustomerPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Profile
+6) Edit Profile
+7) Logout
+
+1 | 1709039318672 | global | pages.CustomerPage | run
+Enter your choice : 
+
+1 | 1709039330914 | global | pages.DepositAmountPage | run
+Enter Amount to deposit : 
+
+1 | 1709039335580 | global | pages.DepositAmountPage | run
+Enter your password : 
+
+1 | 1709039341528 | global | pages.DepositAmountPage | run
+Amount deposited successfully!!!
+
+1 | 1709039341533 | global | pages.CustomerPage | run
+Select Account : 
+
+1 | 1709039341533 | global | pages.CustomerPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709039341534 | global | pages.CustomerPage | printAccounts
+1                          Account [accountNo=1000000000000001, customerId=5, balance=1500.0, branchId=1, status=Active]
+
+1 | 1709039341534 | global | pages.CustomerPage | printAccounts
+2                          Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709039438874 | global | pages.CustomerPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Profile
+6) Edit Profile
+7) Logout
+
+1 | 1709039438875 | global | pages.CustomerPage | run
+Enter your choice : 
+
+1 | 1709039441355 | global | pages.CustomerPage | run
+Thank you!
+
+1 | 1709039441355 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709039441356 | global | pages.BankEazyApp | main
+
 1)Login
 Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708430879608 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708430879861 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708430880115 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708430880116 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708430880364 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708430880598 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708430880842 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708430880842 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708430884662 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708430884918 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708430886172 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708430886173 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708430888035 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709039450889 | global | pages.BankEazyApp | main
 Thanks you! Come again!!
 
-1 | 1708431263696 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709039459706 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
 
-WELCOME TO BANKEAZY BANK!!!
+1 | 1709039459746 | global | pages.BankEazyApp | main
+
 1)Login
 Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708431266365 | pages.BankEazyApp | pages.LoginPage | run
+1 | 1709039463204 | global | pages.LoginPage | run
 Enter User Id : 
 
-1 | 1708431266562 | pages.BankEazyApp | pages.LoginPage | run
+1 | 1709039465331 | global | pages.LoginPage | run
 Enter password : 
 
-1 | 1708431268620 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
+1 | 1709039471099 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
 
-1 | 1708431268620 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709039471105 | global | pages.CustomerPage | run
+Select Account : 
 
-WELCOME TO BANKEAZY BANK!!!
+1 | 1709039471105 | global | pages.CustomerPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709039471124 | global | pages.CustomerPage | printAccounts
+1                          Account [accountNo=1000000000000001, customerId=5, balance=1500.0, branchId=1, status=Active]
+
+1 | 1709039471125 | global | pages.CustomerPage | printAccounts
+2                          Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709039475261 | global | pages.CustomerPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Profile
+6) Edit Profile
+7) Logout
+
+1 | 1709039475262 | global | pages.CustomerPage | run
+Enter your choice : 
+
+1 | 1709039477168 | global | pages.WithdrawAmountPage | run
+Enter Amount to Withdraw : 
+
+1 | 1709039481435 | global | pages.WithdrawAmountPage | run
+Enter your password : 
+
+1 | 1709039486310 | global | pages.WithdrawAmountPage | run
+Amount withdrawn successfull!!! You can collect your cash.!
+
+1 | 1709039486314 | global | pages.CustomerPage | run
+Select Account : 
+
+1 | 1709039486314 | global | pages.CustomerPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709039486314 | global | pages.CustomerPage | printAccounts
+1                          Account [accountNo=1000000000000001, customerId=5, balance=1250.0, branchId=1, status=Active]
+
+1 | 1709039486315 | global | pages.CustomerPage | printAccounts
+2                          Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709039532075 | global | pages.CustomerPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Profile
+6) Edit Profile
+7) Logout
+
+1 | 1709039532076 | global | pages.CustomerPage | run
+Enter your choice : 
+
+1 | 1709039534575 | global | pages.CustomerPage | run
+Thank you!
+
+1 | 1709039534576 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709039534576 | global | pages.BankEazyApp | main
+
 1)Login
 Any other digit)Exit
 
 Enter your option to proceed : 
 
-1 | 1708431272298 | pages.BankEazyApp | pages.BankEazyApp | main
+1 | 1709039546374 | global | pages.BankEazyApp | main
 Thanks you! Come again!!
-
-1 | 1708432343344 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432346003 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708432346685 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708432348299 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708432348299 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432429947 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432431444 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708432431566 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708432431872 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708432431872 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432448579 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432450132 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708432450199 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708432450464 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708432450464 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432451204 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708432451458 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708432452867 | pages.BankEazyApp | pages.LoginPage | run
-User not exists! Provide correct details!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708432452868 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708432453947 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708432454957 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708432457441 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708577737156 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708577740148 | pages.BankEazyApp | pages.BankEazyApp | main
-Thanks you! Come again!!
-
-1 | 1708684018235 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684020440 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708684022132 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708684024360 | pages.BankEazyApp | pages.LoginPage | run
-Incorrect Password! Enter correct password!!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708684024360 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684024360 | pages.BankEazyApp | pages.BankEazyApp | main
-Exception Occurred 
-
-1 | 1708684065143 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684066836 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708684067796 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708684069666 | pages.BankEazyApp | pages.LoginPage | run
-Incorrect Password! Enter correct password!!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708684069667 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684069667 | pages.BankEazyApp | pages.BankEazyApp | main
-Exception Occurred 
-
-1 | 1708684146415 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684147856 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708684148603 | pages.BankEazyApp | pages.LoginPage | run
-Enter password : 
-
-1 | 1708684150746 | pages.BankEazyApp | pages.LoginPage | run
-Incorrect Password! Enter correct password!!!
-----------------------------------------------------------------------------------------------------
-
-1 | 1708684150746 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684150748 | pages.BankEazyApp | pages.BankEazyApp | main
-Exception Occurred 
-
-1 | 1708684267843 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708684270227 | pages.BankEazyApp | pages.LoginPage | run
-Enter User Id : 
-
-1 | 1708952080946 | pages.BankEazyApp | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1708970184923 | pages.BankEazyApp | pages.BankEazyApp | main
-Exception Occurred 
-
-1 | 1708970185453 | pages.BankEazyApp | pages.BankEazyApp | main
-Exception Occurred 
-
-1 | 1708970269701 | global | pages.BankEazyApp | main
-qwertyuio
-
-1 | 1708970269736 | global | pages.BankEazyApp | main
-
-WELCOME TO BANKEAZY BANK!!!
-1)Login
-Any other digit)Exit
-
-Enter your option to proceed : 
-
-1 | 1709023150510 | global | pages.BankEazyApp | main
-Exception Occurred 

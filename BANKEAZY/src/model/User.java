@@ -1,5 +1,7 @@
 package model;
 
+import utilities.Utilities;
+
 public class User {
 	
 	
@@ -96,8 +98,8 @@ public class User {
 		if(status == 1) {
 			userStatus = "Active";
 		}
-		return "User [userId=" + userId + ", name=" + name + ", password=" + password + ", mobile=" + mobile + ", dob="
-				+ dob + ", type=" + userType + ", status=" + userStatus + "]";
+		return "User [userId=" + userId + "\nname=" + name + "\nmobile=" + mobile + "\ndob="
+				+ Utilities.getDateString(dob) + "\ntype=" + userType +"\nstatus=" + userStatus + "]\n";
 	}
 	
 	

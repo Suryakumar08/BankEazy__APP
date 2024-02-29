@@ -1,7 +1,8 @@
 package model;
 
+import utilities.Utilities;
+
 public class Transaction {
-	private int id;
 	private long transactionId;
 	private int customerId;
 	private long accountNo;
@@ -10,13 +11,8 @@ public class Transaction {
 	private int type;		//1 ->	 Deposit, 2 -> Withdraw, 3 -> debit, 4 -> credit
 	private int status;		//0 -> Failure, 1 -> Success
 	private long time;
-	private double closigBalance;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private double closingBalance;
+	private double amount;
 	public long getTransactionId() {
 		return transactionId;
 	}
@@ -47,8 +43,46 @@ public class Transaction {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
 	public int getType() {
 		return type;
+	}
+	public void setType(String type) {
+		if(type.equalsIgnoreCase("deposit")) {
+			this.type = 1;
+		}
+		else if(type.equalsIgnoreCase("withdraw")) {
+			this.type = 2;
+		}
+		else if(type.equalsIgnoreCase("debit")) {
+			this.type = 3;
+		}
+		else if(type.equalsIgnoreCase("credit")) {
+			this.type = 4;
+		}
+	}
+	public String getTypeAsString() {
+		if(type == 1) {
+			return "Deposit";
+		}
+		if(type == 2) {
+			return "Withdraw";
+		}
+		if(type == 3) {
+			return "Debit";
+		}
+		if(type == 4) {
+			return "Credit";
+		}
+		else {
+			return "";
+		}
 	}
 	public void setType(int type) {
 		this.type = type;
@@ -65,19 +99,17 @@ public class Transaction {
 	public void setTime(long time) {
 		this.time = time;
 	}
-	public double getClosigBalance() {
-		return closigBalance;
+	public double getClosingBalance() {
+		return closingBalance;
 	}
-	public void setClosigBalance(double closigBalance) {
-		this.closigBalance = closigBalance;
+	public void setClosingBalance(double closingBalance) {
+		this.closingBalance = closingBalance;
 	}
-	
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", transactionId=" + transactionId + ", customerId=" + customerId
+		return "Transaction [transactionId=" + transactionId + ", customerId=" + customerId
 				+ ", accountNo=" + accountNo + ", transactionAccountNo=" + transactionAccountNo + ", description="
-				+ description + ", type=" + type + ", status=" + status + ", time=" + time + ", closigBalance="
-				+ closigBalance + "]";
+				+ description + ", type=" + getTypeAsString() + ", status=" + (status == 1 ? "Success" : "Failed") + ", time=" + Utilities.getDateTimeString(time) + ", closingBalance="
+				+ closingBalance + ", amount=" + amount + "]";
 	}
-	
 }

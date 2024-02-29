@@ -25,7 +25,7 @@ public class Customer extends User{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\nCustomer [id=" + id + ", pan=" + pan + ", aadhar=" + aadhar + "]";
+		return super.toString() + "\nCustomer [pan=" + pan + "\naadhar=" + aadhar + "]\n";
 	}
 	
 	

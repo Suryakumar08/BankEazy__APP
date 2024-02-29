@@ -23,14 +23,15 @@ public class Utilities {
 		Instant instant = Instant.ofEpochMilli(millis);
 		ZonedDateTime date = ZonedDateTime.ofInstant(instant, ZoneId.systemDefault());
 		
-		return date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		String resultDate = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		return resultDate;
 	}
 	
 	public static String getDateTimeString(long millis) {
 		Instant instant = Instant.ofEpochMilli(millis);
 		ZonedDateTime dateTime = ZonedDateTime.ofInstant(instant, ZoneId.systemDefault());
-		
-		return dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
+		String resultDateTime = dateTime.format(DateTimeFormatter.ofPattern("dd/MMM/yyyy - HH-mm-ss"));
+		return resultDateTime;
 	}
 }
 

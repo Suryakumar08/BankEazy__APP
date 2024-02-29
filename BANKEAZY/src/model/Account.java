@@ -3,9 +3,9 @@ package model;
 public class Account {
 	private long accountNo;
 	private int customerId;
-	private double balance;
-	private int branchId;
-	private int status;		//1 -> Active 0 -> InActive
+	private double balance = -1;
+	private int branchId = -1;
+	private int status = -1;		//1 -> Active 0 -> InActive
 	public long getAccountNo() {
 		return accountNo;
 	}

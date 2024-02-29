@@ -6,40 +6,39 @@ import exception.CustomBankException;
 import helpers.CustomerHelper;
 import utilities.InputHelper;
 
-public class DepositAmountPage {
-
+public class WithdrawAmountPage {
 	private static Logger logger = BankEazyApp.logger;
-
-	public static void run(long accountNo, int userId) throws CustomBankException{
+	public static void run(long accountNo, int customerId) throws CustomBankException{
 		CustomerHelper helper = new CustomerHelper();
 		try {
-			double amount = -1;
+			double amount;
 			while(true) {
-				logger.info("Enter Amount to deposit : ");
+				logger.info("Enter Amount to Withdraw : ");
 				amount = InputHelper.getDouble();
 				if(amount > 0) {
 					break;
 				}
 			}
+			
 
 			logger.info("Enter your password : ");
 			String password = InputHelper.getString();
 
-			if (helper.checkPassword(userId, password)) {
+			if (helper.checkPassword(customerId, password)) {
 				CustomerHelper customerHelper = new CustomerHelper();
-				boolean isDeposited = customerHelper.depositAmount(accountNo, amount);
-				if(isDeposited) {
-					logger.fine("Amount deposited successfully!!!");
+				boolean isWithdrawable = customerHelper.withdrawAmount(accountNo, amount);
+				if(isWithdrawable) {
+					logger.fine("Amount withdrawn successfull!!! You can collect your cash.!");
 				}
 				else {
-					logger.warning("Deposit failed.. Please try after sometime...");
+					logger.warning("Insufficient Balance!!!");
 				}
 			}
 			else {
 				logger.warning("Password Incorrect!!!");
 			}
 		} catch (CustomBankException e) {
-			e.printStackTrace();
+			logger.warning(e.getMessage());
 		}
 
 	}

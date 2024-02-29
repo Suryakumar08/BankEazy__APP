@@ -2,9 +2,8 @@ package pages;
 
 import java.util.logging.Logger;
 
-import daos.AccountDAO;
-import daos.AccountDaoInterface;
 import exception.CustomBankException;
+import helpers.EmployeeHelper;
 import model.Account;
 import utilities.InputHelper;
 
@@ -12,7 +11,8 @@ public class AddAccountPage {
 
 	private static Logger logger = BankEazyApp.logger;
 
-	public static long run(int branchId){
+	public static long run(int branchId) throws CustomBankException{
+		EmployeeHelper helper = new EmployeeHelper();
 		while (true) {
 			try {
 				logger.fine("Create Account for customer : ");
@@ -33,8 +33,7 @@ public class AddAccountPage {
 				account.setBranchId(branchId);
 				account.setStatus(1);
 				
-				AccountDaoInterface accountDao = new AccountDAO();
-				return accountDao.addAccount(account);
+				return helper.addAccount(account);
 				
 			}catch(CustomBankException e) {
 				logger.warning(e.getMessage());

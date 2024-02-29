@@ -27,21 +27,13 @@ public class UserDAO implements UserDaoInterface{
 			try(ResultSet result = statement.executeQuery()){
 				User user = null;
 				if(result.next()) {
-					user = new User();
-					user.setUserId(result.getInt("id"));
-					user.setName(result.getString("name"));
-					user.setPassword(result.getString("password"));
-					user.setMobile(result.getString("mobile"));
-					user.setGender(result.getString("gender"));
-					user.setDob(result.getLong("dob"));
-					user.setStatus(result.getInt("status"));
-					user.setType(result.getInt("type"));
+					user = new DAOHelper().mapResultSetToGivenClassObject(result, User.class);
 				}
 				return user;
 			}
 		} catch (SQLException e) {
-			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 //			e.printStackTrace();
+			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
 

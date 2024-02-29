@@ -18,7 +18,7 @@ public class JDBCConnector {
 	}
 
 
-	public static void establishConnection(String dbName) throws CustomBankException{
+	private static void establishConnection(String dbName) throws CustomBankException{
 		if(connection == null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
