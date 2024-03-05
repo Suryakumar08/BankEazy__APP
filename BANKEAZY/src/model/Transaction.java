@@ -3,23 +3,23 @@ package model;
 import utilities.Utilities;
 
 public class Transaction {
-	private long transactionId;
-	private int customerId;
-	private long accountNo;
-	private long transactionAccountNo;
+	private Long transactionId;
+	private Integer customerId;
+	private Long accountNo;
+	private Long transactionAccountNo;
 	private String description;
-	private int type;		//1 ->	 Deposit, 2 -> Withdraw, 3 -> debit, 4 -> credit
-	private int status;		//0 -> Failure, 1 -> Success
-	private long time;
-	private double closingBalance;
-	private double amount;
-	public long getTransactionId() {
+	private Integer type;		//1 ->	 Deposit, 2 -> Withdraw, 3 -> debit, 4 -> credit
+	private Integer status;		//0 -> Failure, 1 -> Success
+	private Long time;
+	private Double closingBalance;
+	private Double amount;
+	public Long getTransactionId() {
 		return transactionId;
 	}
 	public void setTransactionId(long transactionId) {
 		this.transactionId = transactionId;
 	}
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 	public void setCustomerId(int customerId) {
@@ -53,7 +53,7 @@ public class Transaction {
 	public int getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setTypeFromString(String type) {
 		if(type.equalsIgnoreCase("deposit")) {
 			this.type = 1;
 		}

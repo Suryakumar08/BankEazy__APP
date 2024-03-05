@@ -14,7 +14,7 @@ public class CustomerPage {
 		boolean continueProgram = true;		
 		while (continueProgram) {
 			try {
-				logger.info("1 -> View Profile\n2 -> Change Password\n 3 -> Accounts\n 4 -> logout");
+				logger.info("1 -> View Profile\n2 -> Change Password\n3 -> Accounts\n4 -> logout");
 				int customerChoice = InputHelper.getInt();
 				switch(customerChoice) {
 				case 1:{

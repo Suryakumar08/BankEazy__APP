@@ -1,11 +1,11 @@
 package model;
 
 public class Account {
-	private long accountNo;
-	private int customerId;
-	private double balance = -1;
-	private int branchId = -1;
-	private int status = -1;		//1 -> Active 0 -> InActive
+	private Long accountNo;
+	private Integer customerId;
+	private Double balance;
+	private Integer branchId = -1;
+	private Integer status = -1;		//1 -> Active 0 -> InActive
 	public long getAccountNo() {
 		return accountNo;
 	}

@@ -48,8 +48,7 @@ public class BankEazyApp {
 
 	public static void setLoggerProperties() {
 		try {
-
-			FileHandler fileHandler = new FileHandler("./logFiles/BankEazyLogs.log", true);
+			FileHandler fileHandler = new FileHandler("BankEazyLogs.log", true);
 			fileHandler.setFormatter(new customLogFileFormatter());
 			logger.addHandler(fileHandler);
 			ConsoleHandler consoleHandler = new ConsoleHandler();

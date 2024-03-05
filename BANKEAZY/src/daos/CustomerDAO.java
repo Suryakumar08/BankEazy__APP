@@ -1,5 +1,6 @@
 package daos;
 
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +45,7 @@ public class CustomerDAO implements CustomerDaoInterface{
 				}
 
 				try (ResultSet genKeys = statement.getGeneratedKeys()) {
-					while (genKeys.next()) {
+					if (genKeys.next()) {
 						newId = genKeys.getInt(1);
 					}
 				}
@@ -81,8 +82,10 @@ public class CustomerDAO implements CustomerDaoInterface{
 		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
 			statement.setInt(1, customerId);
 			try(ResultSet customerSet = statement.executeQuery()){
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Customer.class);
 				if(customerSet.next()) {
-					customer = new DAOHelper().mapResultSetToGivenClassObject(customerSet, Customer.class);
+					customer = daoHelper.mapResultSetToGivenClassObject(customerSet, Customer.class, settersMap);
 				}
 				return customer;
 			}
@@ -97,8 +100,10 @@ public class CustomerDAO implements CustomerDaoInterface{
 		try(Statement statement = connection.createStatement()){
 			try(ResultSet records = statement.executeQuery(getCustomerQuery)){
 				customerMap = new HashMap<>();
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Customer.class);
 				while(records.next()) {
-					Customer customer = new DAOHelper().mapResultSetToGivenClassObject(records, Customer.class);
+					Customer customer = daoHelper.mapResultSetToGivenClassObject(records, Customer.class, settersMap);
 					customerMap.put(customer.getUserId(), customer);
 				}
 				return customerMap;
@@ -107,17 +112,4 @@ public class CustomerDAO implements CustomerDaoInterface{
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
-
-	@Override
-	public boolean updateField(Customer customer) throws CustomBankException {
-//		StringBuilder updateQuery = new StringBuilder("update Customer ");
-		return false;
-	}
-	
-	public void addSets(String updateQuery, Customer customer) {
-		if(customer.getName() != null) {
-			
-		}
-	}
-	
 }

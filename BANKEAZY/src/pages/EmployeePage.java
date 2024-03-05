@@ -6,10 +6,12 @@ import java.util.logging.Logger;
 
 import exception.CustomBankException;
 import helpers.EmployeeHelper;
+import model.Branch;
 import model.Customer;
 import model.Employee;
 import model.Transaction;
 import utilities.InputHelper;
+import utilities.Utilities;
 
 public class EmployeePage {
 
@@ -23,7 +25,7 @@ public class EmployeePage {
 		boolean continueProgram = true;
 		while (continueProgram) {
 			logger.info(
-					"1) Add Employee\n2) Add Customer\n3) Add Customer Account\n4) Edit User\n5) View Employee List\n6) View Employee\n7) View Customer List\n8) View Customer\n9) View Transaction Details\n10) View Profile\n11) Edit Profile\n12) Logout\n\nEnter your choice : \n");
+					"1) Add Employee\n2) Add Customer\n3) Add Customer Account\n4) Edit User\n5) View Employee List\n6) View Employee\n7) View Customer List\n8) View Customer\n9) View Transaction Details\n10) View Profile\n11) Edit Profile\n12) Add Branch\n13) Edit branch details\n14) Show all branches\n15) Logout\n\nEnter your choice : \n");
 			try {
 				int employeeChoice = InputHelper.getInt();
 				switch (employeeChoice) {
@@ -57,23 +59,27 @@ public class EmployeePage {
 				case 5: {
 					if (empRole == 1) {
 						Map<Integer, Employee> employees = helper.getEmployees();
-						printObjects(employees);
+						Utilities.printObjects(employees);
 					} else {
 						logger.fine("Only Admins have the permission!");
 					}
-					logger.info("Admin view Employee list");
 					break;
 				}
 				case 6:{
-					logger.info("Enter Employee Id : ");
-					int employeeId = InputHelper.getInt();
-					Employee employee = helper.getEmployee(employeeId);
-					logger.fine(employee.toString());
+					if(empRole == 1) {
+						logger.info("Enter Employee Id : ");
+						int employeeId = InputHelper.getInt();
+						Employee employee = helper.getEmployee(employeeId);
+						logger.fine(employee.toString());
+					}
+					else {
+						logger.warning("Only admins have the permission!");
+					}
 					break;
 				}
 				case 7: {
 					Map<Integer, Customer> customers = helper.getCustomers();
-					printObjects(customers);
+					Utilities.printObjects(customers);
 					break;
 				}
 				case 8:{
@@ -84,8 +90,25 @@ public class EmployeePage {
 					break;
 				}
 				case 9: {
-					List<Transaction> transactions = helper.getAllTransactions();
-					printTransactions(transactions);
+					int currOffset = 0;
+					boolean continuePrintTransaction = true;
+					do{
+						List<Transaction> transactions = helper.getAllTransactions();
+						if(transactions.size() == 0) {
+							logger.warning("No more Transactions!!!");
+							continuePrintTransaction = false;
+							continue;
+						}
+						Utilities.printObjects(transactions);
+						logger.info("1. Next\n2. Back");
+						int choice = InputHelper.getInt();
+						if(choice == 1) {
+							currOffset += 50;
+						}
+						else {
+							currOffset -= 50;
+						}
+					}while(continuePrintTransaction);
 					break;
 				}
 				case 10: {
@@ -97,7 +120,30 @@ public class EmployeePage {
 					logger.info("Edit Profile");
 					break;
 				}
-				case 12: {
+				case 12:{
+					if(empRole == 1) {
+						AddBranchPage.run();
+					}
+					else {
+						logger.warning("Only Admins have this permission!");
+					}
+					break;
+				}
+				case 13:{
+					if(empRole == 1) {
+						EditBranchPage.run();
+					}
+					else {
+						logger.warning("Only Admins have this permission!");
+					}
+					break;
+				}
+				case 14:{
+					Map<Integer, Branch> branches = helper.getAllBranches();
+					Utilities.printObjects(branches);
+					break;
+				}
+				case 15: {
 					logger.info("Logout");
 					continueProgram = false;
 					break;
@@ -117,15 +163,4 @@ public class EmployeePage {
 		}
 	}
 
-	private static <K, V> void printObjects(Map<K, V> map) {
-		for(V value : map.values()) {
-			logger.fine(value.toString());
-		}
-	}
-
-	private static <T> void printTransactions(List<T> objects) {
-		for(T obj : objects) {
-			logger.fine(obj.toString());
-		}
-	}
 }

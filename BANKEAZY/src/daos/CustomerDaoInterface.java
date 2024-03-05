@@ -11,8 +11,6 @@ public interface CustomerDaoInterface {
 	
 	public Customer getCustomer(int customerId) throws CustomBankException;
 
-	public boolean updateField(Customer customer) throws CustomBankException;
-	
 	public Map<Integer, Customer> getCustomers() throws CustomBankException;
 
 }

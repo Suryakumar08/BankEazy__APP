@@ -1,5 +1,6 @@
 package daos;
 
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import exception.CustomBankException;
 import jdbc.JDBCConnector;
@@ -76,8 +78,10 @@ public class TransactionDAO implements TransactionDaoInterface {
 			statement.setLong(3, to);
 			List<Transaction> transactionsList = new ArrayList<>(); 
 			try(ResultSet transactions = statement.executeQuery()){
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Transaction.class);
 				while(transactions.next()) {
-					Transaction currTransaction = new DAOHelper().mapResultSetToGivenClassObject(transactions, Transaction.class);
+					Transaction currTransaction = daoHelper.mapResultSetToGivenClassObject(transactions, Transaction.class, settersMap);
 					transactionsList.add(currTransaction);
 				}
 				return transactionsList;
@@ -96,8 +100,10 @@ public class TransactionDAO implements TransactionDaoInterface {
 			statement.setLong(2, to);
 			List<Transaction> transactionsList = new ArrayList<>(); 
 			try(ResultSet transactions = statement.executeQuery()){
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Transaction.class);
 				while(transactions.next()) {
-					Transaction currTransaction = new DAOHelper().mapResultSetToGivenClassObject(transactions, Transaction.class);
+					Transaction currTransaction = daoHelper.mapResultSetToGivenClassObject(transactions, Transaction.class, settersMap);
 					transactionsList.add(currTransaction);
 				}
 				return transactionsList;

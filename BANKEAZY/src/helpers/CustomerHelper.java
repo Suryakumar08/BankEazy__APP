@@ -77,8 +77,8 @@ public class CustomerHelper {
 		currTransaction.setTransactionAccountNo(-1);
 		currTransaction.setDescription("");
 		currTransaction.setAmount(amount);
-		currTransaction.setType("Deposit");
-		return makeTransaction(currTransaction);
+		currTransaction.setTypeFromString("Deposit");
+		return makeIntraBankTransaction(currTransaction);
 	}
 
 	public boolean withdrawAmount(long accountNo, double amount) throws CustomBankException {
@@ -93,8 +93,8 @@ public class CustomerHelper {
 		currTransaction.setTransactionAccountNo(-1);
 		currTransaction.setDescription("");
 		currTransaction.setAmount(amount);
-		currTransaction.setType("Withdraw");
-		return makeTransaction(currTransaction);
+		currTransaction.setTypeFromString("Withdraw");
+		return makeIntraBankTransaction(currTransaction);
 	}
 
 	private boolean updateAmount(long accountNo, double amount) throws CustomBankException {
@@ -108,19 +108,19 @@ public class CustomerHelper {
 		return transactionDao.getLastTransactionId();
 	}
 
-	public boolean makeTransaction(Transaction currTransaction) throws CustomBankException {
+	public boolean makeIntraBankTransaction(Transaction currTransaction) throws CustomBankException {
 
 		currTransaction.setAmount(Math.abs(currTransaction.getAmount()));
-		
-		double currAmount = currTransaction.getAmount(); 
+
+		double currAmount = currTransaction.getAmount();
 		long currAccountNo = currTransaction.getAccountNo();
 		Account currAccount = getAccount(currAccountNo);
 		double currBalance = currAccount.getBalance();
 
 		currTransaction.setTime(Utilities.getCurrentTime());
-		
+
 		long lastTransId = -1;
-		if(currTransaction.getTransactionId() == 0) {
+		if (currTransaction.getTransactionId() == 0) {
 			lastTransId = getLastTransactionId();
 			currTransaction.setTransactionId(lastTransId + 1);
 		}
@@ -128,6 +128,7 @@ public class CustomerHelper {
 		if (currTransaction.getTypeAsString().equalsIgnoreCase("withdraw")
 				|| currTransaction.getTypeAsString().equalsIgnoreCase("debit")) {
 			double closingBalance = currBalance - currAmount;
+			currTransaction.setAmount(0 - currAmount);
 			if (closingBalance < 0) {
 				currTransaction.setStatus(0);
 				currTransaction.setClosingBalance(currBalance);
@@ -136,11 +137,13 @@ public class CustomerHelper {
 				currTransaction.setClosingBalance(closingBalance);
 			}
 			boolean isTransactionSuccess = transactionDao.addTransaction(currTransaction);
-			if(isTransactionSuccess && currTransaction.getStatus() == 1) {
+			if (isTransactionSuccess && currTransaction.getStatus() == 1) {
 				updateAmount(currTransaction.getAccountNo(), closingBalance);
 			}
-			
-			
+			if(closingBalance < 0) {
+				throw new CustomBankException(CustomBankException.NOT_ENOUGH_BALANCE);
+			}
+
 			if (currTransaction.getTypeAsString().equalsIgnoreCase("debit")) {
 				Transaction recipientTransaction = new Transaction();
 				Account recipientAccount = getAccount(currTransaction.getTransactionAccountNo());
@@ -150,28 +153,66 @@ public class CustomerHelper {
 				recipientTransaction.setTransactionAccountNo(currAccountNo);
 				recipientTransaction.setDescription(currTransaction.getDescription());
 				recipientTransaction.setTransactionId(lastTransId);
-				recipientTransaction.setAmount(currTransaction.getAmount());
-				recipientTransaction.setType("Credit");
+				recipientTransaction.setAmount(currAmount);
+				recipientTransaction.setTypeFromString("Credit");
 				recipientTransaction.setTime(Utilities.getCurrentTime());
 				recipientTransaction.setStatus(1);
 
-				boolean isSecondTransactionSuccess = makeTransaction(recipientTransaction);
+				boolean isSecondTransactionSuccess = makeIntraBankTransaction(recipientTransaction);
 				return isTransactionSuccess && isSecondTransactionSuccess;
 			}
 			return isTransactionSuccess;
-		} else if (currTransaction.getTypeAsString().equalsIgnoreCase("deposit") || currTransaction.getTypeAsString().equalsIgnoreCase("Credit")) {
+		} else if (currTransaction.getTypeAsString().equalsIgnoreCase("deposit")
+				|| currTransaction.getTypeAsString().equalsIgnoreCase("Credit")) {
 			double closingBalance = currBalance + currTransaction.getAmount();
 			currTransaction.setStatus(1);
 			currTransaction.setClosingBalance(closingBalance);
 
 			boolean isTransactionSuccess = transactionDao.addTransaction(currTransaction);
-			if(isTransactionSuccess && currTransaction.getStatus() == 1) {
+			if (isTransactionSuccess && currTransaction.getStatus() == 1) {
 				updateAmount(currTransaction.getAccountNo(), closingBalance);
 			}
 			return isTransactionSuccess;
 		}
 
 		return true;
+	}
+
+	public boolean makeInterBankTransaction(Transaction currTransaction) throws CustomBankException {
+		currTransaction.setAmount(Math.abs(currTransaction.getAmount()));
+
+		double currAmount = currTransaction.getAmount();
+		long currAccountNo = currTransaction.getAccountNo();
+		Account currAccount = getAccount(currAccountNo);
+		double currBalance = currAccount.getBalance();
+
+		currTransaction.setTime(Utilities.getCurrentTime());
+
+		long lastTransId = -1;
+		if (currTransaction.getTransactionId() == 0) {
+			lastTransId = getLastTransactionId();
+			currTransaction.setTransactionId(lastTransId + 1);
+		}
+		
+		double closingBalance = currBalance - currAmount;
+		if (closingBalance < 0) {
+			currTransaction.setStatus(0);
+			currTransaction.setClosingBalance(currBalance);
+		} else {
+			currTransaction.setStatus(1);
+			currTransaction.setClosingBalance(closingBalance);
+		}
+		boolean isTransactionSuccess = transactionDao.addTransaction(currTransaction);
+		if (isTransactionSuccess && currTransaction.getStatus() == 1) {
+			updateAmount(currTransaction.getAccountNo(), closingBalance);
+		}
+		
+		if(closingBalance < 0) {
+			throw new CustomBankException(CustomBankException.NOT_ENOUGH_BALANCE);
+		}
+		
+		return isTransactionSuccess;
+
 	}
 
 }

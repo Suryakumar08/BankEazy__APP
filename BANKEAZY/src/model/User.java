@@ -5,14 +5,14 @@ import utilities.Utilities;
 public class User {
 	
 	
-	private int userId;
+	private Integer userId;
 	private String name;
 	private String password;
 	private String mobile;
 	private String gender;
-	private long dob;
-	private int type;		//1 -> Employee, 0 -> Customer
-	private int status;		//1 -> Active, 0 -> Inactive
+	private Long dob;
+	private Integer type;		//1 -> Employee, 0 -> Customer
+	private Integer status;		//1 -> Active, 0 -> Inactive
 	public int getUserId() {
 		return userId;
 	}

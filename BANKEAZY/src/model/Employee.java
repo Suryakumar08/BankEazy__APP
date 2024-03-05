@@ -1,11 +1,11 @@
 package model;
 
 public class Employee extends User {
-	private int id;
-	private int salary;
-	private long joiningDate;
-	private int branchId;
-	private int role;		//1 -> Admin, 2 -> Employee
+	private Integer id;
+	private Integer salary;
+	private Long joiningDate;
+	private Integer branchId;
+	private Integer role;		//1 -> Admin, 2 -> Employee
 	
 	public int getId() {
 		return id;
@@ -34,7 +34,7 @@ public class Employee extends User {
 	public int getRole(int roleType) {
 		return role;
 	}
-	public String getRole(String roleType) {
+	public String getRoleAsString(String roleType) {
 		if(role == 1) {
 			return "Admin";
 		}
@@ -43,7 +43,7 @@ public class Employee extends User {
 	public void setRole(int role) {
 		this.role = role;
 	}
-	public void setRole(String role) {
+	public void setRoleFromString(String role) {
 		if(role.equalsIgnoreCase("admin")) {
 			this.role = 1;
 		}

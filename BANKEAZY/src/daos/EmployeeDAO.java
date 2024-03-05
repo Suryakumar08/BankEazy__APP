@@ -1,5 +1,6 @@
 package daos;
 
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,8 +32,10 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 
 			Employee employee = null;
 			try (ResultSet result = statement.executeQuery()) {
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Employee.class);
 				if (result.next()) {
-					employee = new DAOHelper().mapResultSetToGivenClassObject(result, Employee.class);
+					employee = daoHelper.mapResultSetToGivenClassObject(result, Employee.class, settersMap);
 					return employee;
 				} else {
 					throw new CustomBankException(CustomBankException.USER_NOT_EXISTS);
@@ -106,8 +109,10 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 		try (Statement statement = connection.createStatement()) {
 			
 			try (ResultSet result = statement.executeQuery(selectEmployeeQuery)) {
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Employee.class);
 				while (result.next()) {
-					Employee employee = new DAOHelper().mapResultSetToGivenClassObject(result, Employee.class);
+					Employee employee = daoHelper.mapResultSetToGivenClassObject(result, Employee.class, settersMap);
 
 					employeeList.put(employee.getId(), employee);
 

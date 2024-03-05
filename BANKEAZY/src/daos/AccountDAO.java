@@ -1,5 +1,6 @@
 package daos;
 
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import jdbc.JDBCConnector;
 import model.Account;
 
 public class AccountDAO implements AccountDaoInterface {
+	
+	
 	private Connection connection = null;
 	private String addAccountQuery = 
 			"Insert into Account(customerId, balance, branchId, status) values(?, ?, ?, ?)";
@@ -59,9 +62,11 @@ public class AccountDAO implements AccountDaoInterface {
 		try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
 			statement.setObject(1, userId);
 			try (ResultSet accounts = statement.executeQuery()) {
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Account.class);
 				while (accounts.next()) {
 					Account account = null;
-					account = new DAOHelper().mapResultSetToGivenClassObject(accounts, Account.class);
+					account = daoHelper.mapResultSetToGivenClassObject(accounts, Account.class, settersMap);
 					accountMap.put(++noOfAccounts, account);
 				}
 			}
@@ -121,8 +126,10 @@ public class AccountDAO implements AccountDaoInterface {
 		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
 			statement.setLong(1, accNo);
 			try(ResultSet accountSet = statement.executeQuery()){
+				DAOHelper daoHelper = new DAOHelper();
+				Map<String, Method> settersMap = daoHelper.getSettersMap(Account.class);
 				if(accountSet.next()) {
-					account = new DAOHelper().mapResultSetToGivenClassObject(accountSet, Account.class);
+					account = daoHelper.mapResultSetToGivenClassObject(accountSet, Account.class, settersMap);
 				}
 			}
 			return account;

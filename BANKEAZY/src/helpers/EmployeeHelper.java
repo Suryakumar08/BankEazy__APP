@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import daos.AccountDaoInterface;
+import daos.BranchDaoInterface;
 import daos.CustomerDaoInterface;
 import daos.EmployeeDaoInterface;
 import daos.TransactionDaoInterface;
 import exception.CustomBankException;
 import model.Account;
+import model.Branch;
 import model.Customer;
 import model.Employee;
 import model.Transaction;
@@ -22,6 +24,7 @@ public class EmployeeHelper {
 	private CustomerDaoInterface customerDao = null;
 	private AccountDaoInterface accountDao = null;
 	private TransactionDaoInterface transactionDao = null;
+	private BranchDaoInterface branchDao = null;
 
 	public EmployeeHelper() throws CustomBankException {
 		Class<?> EmployeeDAO;
@@ -32,6 +35,8 @@ public class EmployeeHelper {
 		Constructor<?> accDao;
 		Class<?> TransactionDAO;
 		Constructor<?> transDao;
+		Class<?> BranchDAO;
+		Constructor<?> branchDaoCon;
 		try {
 			EmployeeDAO = Class.forName("daos.EmployeeDAO");
 			empDao = EmployeeDAO.getDeclaredConstructor();
@@ -48,6 +53,10 @@ public class EmployeeHelper {
 			TransactionDAO = Class.forName("daos.TransactionDAO");
 			transDao = TransactionDAO.getDeclaredConstructor();
 			transactionDao = (TransactionDaoInterface) transDao.newInstance();
+			
+			BranchDAO = Class.forName("daos.BranchDAO");
+			branchDaoCon = BranchDAO.getDeclaredConstructor();
+			branchDao = (BranchDaoInterface)branchDaoCon.newInstance();
 			
 		} catch (NoSuchMethodException | SecurityException | ClassNotFoundException | InstantiationException
 				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -79,13 +88,6 @@ public class EmployeeHelper {
 	public long addAccount(Account account) throws CustomBankException{
 		return accountDao.addAccount(account);
 	}
-
-	public boolean updateCustomerName(int customerId, String newName) throws CustomBankException{
-			Customer customer = new Customer();
-			customer.setName(newName);
-			return customerDao.updateField(customer);
-	}
-
 	
 	public Map<Integer, Customer> getCustomers() throws CustomBankException{
 		return customerDao.getCustomers();
@@ -107,5 +109,26 @@ public class EmployeeHelper {
 	public Customer getCustomer(int customerId) throws CustomBankException{
 		return customerDao.getCustomer(customerId);
 	}
+
+	public int addBranch(Branch newBranch) throws CustomBankException{
+		return branchDao.addBranch(newBranch);
+	}
+
+	public Map<Integer, Branch> getAllBranches() throws CustomBankException{
+		return branchDao.getBranches();
+	}
+
+	public Branch getBranch(int branchId) throws CustomBankException {
+		return branchDao.getBranch(branchId);
+	}
+
+	public boolean editBranch(Branch editBranch) throws CustomBankException {
+		return branchDao.updateBranch(editBranch);
+	}
+
+	public boolean editUser(Customer editCustomer) {
+		return false;
+	}
+	
 
 }

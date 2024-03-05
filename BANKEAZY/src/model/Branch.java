@@ -1,7 +1,7 @@
 package model;
 
 public class Branch {
-	private int id;
+	private Integer id;
 	private String name;
 	private String address;
 	private String ifsc;

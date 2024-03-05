@@ -48,9 +48,11 @@ public class AccountsPage {
 						break;
 					}
 					case 4: {
+						ViewCustomerTransactionPage.run(currAccountNo);
 						break;
 					}
 					case 5: {
+						logger.fine(account.toString());
 						break;
 					}
 					case 6: {

@@ -6,6 +6,7 @@ import exception.CustomBankException;
 import helpers.CustomerHelper;
 import model.Transaction;
 import utilities.InputHelper;
+import utilities.Validators;
 
 public class TransferAmountPage {
 	private static Logger logger = BankEazyApp.logger;
@@ -41,9 +42,9 @@ public class TransferAmountPage {
 					currTransaction.setTransactionAccountNo(recipientAccNo);
 					currTransaction.setDescription(description);
 					currTransaction.setAmount(amount);
-					currTransaction.setType("Debit");
+					currTransaction.setTypeFromString("Debit");
 
-					boolean isSuccess = helper.makeTransaction(currTransaction);
+					boolean isSuccess = helper.makeIntraBankTransaction(currTransaction);
 
 					if (isSuccess) {
 						logger.info("Transaction Success!!!");
@@ -54,6 +55,37 @@ public class TransferAmountPage {
 				}
 				case 2: {
 					logger.info("Transferring outside the bank!");
+					logger.info("Enter recipient account no : ");
+					long recipientAccountNo = InputHelper.getLong();
+
+					logger.info("Enter IFSC code : ");
+					String ifsc = InputHelper.getString();
+					Validators.validateInput(ifsc);
+
+					logger.info("Enter description : ");
+					String description = InputHelper.getString();
+
+					logger.info("Enter Amount to Transfer : ");
+					double amount = InputHelper.getDouble();
+					if (amount <= 0) {
+						throw new CustomBankException(CustomBankException.ERROR_OCCURRED + "Please Enter valid amount!!!");
+					}
+					
+					Transaction currTransaction = new Transaction();
+					currTransaction.setAccountNo(accountNo);
+					currTransaction.setCustomerId(customerId);
+					currTransaction.setTransactionAccountNo(recipientAccountNo);
+					currTransaction.setDescription(description);
+					currTransaction.setAmount(amount);
+					currTransaction.setTypeFromString("Debit");
+
+					boolean isSuccess = helper.makeInterBankTransaction(currTransaction);
+
+					if (isSuccess) {
+						logger.info("Transaction Success!!!");
+					} else {
+						logger.warning("Transaction Failed!!");
+					}
 					break;
 				}
 				case 3: {
