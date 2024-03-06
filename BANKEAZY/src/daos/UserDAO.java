@@ -19,6 +19,8 @@ public class UserDAO implements UserDaoInterface{
 	public UserDAO() throws CustomBankException {
 		connection = JDBCConnector.getConnection();
 	}
+	
+	//read
 	public User getUser(int userId) throws CustomBankException {
 				
 		StringBuilder query = new StringBuilder(selectAllQuery);

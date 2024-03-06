@@ -7,10 +7,13 @@ import model.Employee;
 
 public interface EmployeeDaoInterface {
 
-	public Employee getEmployee(int userId) throws CustomBankException;
+	//create
+	int addEmployee(Employee employee) throws CustomBankException;
+	
+	//read
+	Map<Integer, Employee> getEmployees(Employee employee,int limit, long offset) throws CustomBankException;
 
-	public int addEmployee(Employee employee) throws CustomBankException;
-
-	public Map<Integer, Employee> getAllEmployees() throws CustomBankException;
+	//update
+	boolean updateEmployee(Employee employee, long employeeId) throws CustomBankException;
 
 }

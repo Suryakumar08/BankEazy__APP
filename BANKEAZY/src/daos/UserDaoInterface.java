@@ -4,5 +4,7 @@ import exception.CustomBankException;
 import model.User;
 
 public interface UserDaoInterface {
-	public User getUser(int userId) throws CustomBankException;
+	
+	//read
+	User getUser(int userId) throws CustomBankException;
 }

@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.CustomerHelper;
+import helpers.AccountHelper;
 import model.Account;
 import utilities.InputHelper;
 
@@ -13,14 +13,14 @@ public class AccountsPage {
 	private static Logger logger = BankEazyApp.logger;
 
 	public static void run(int userId) throws CustomBankException {
-		CustomerHelper helper = new CustomerHelper();
+		AccountHelper helper = new AccountHelper();
 		boolean continueProgram = true;
-		Map<Integer, Account> accounts = helper.getAccounts(userId);
+		Map<Long, Account> accounts = helper.getAccounts(userId);
 		while (continueProgram) {
 			try {
-				logger.info("Select Account : ");
+				logger.info("Select Account  by entering account number: ");
 				printAccounts(accounts);
-				int selectedAccount = InputHelper.getInt();
+				long selectedAccount = InputHelper.getLong();
 
 				Account account = accounts.get(selectedAccount);
 
@@ -72,9 +72,9 @@ public class AccountsPage {
 		}
 	}
 
-	private static void printAccounts(Map<Integer, Account> accounts) {
+	private static void printAccounts(Map<Long, Account> accounts) {
 		logger.fine("SI.NO                   Account Details");
-		for (Map.Entry<Integer, Account> element : accounts.entrySet()) {
+		for (Map.Entry<Long, Account> element : accounts.entrySet()) {
 			logger.fine(element.getKey() + "                    " + element.getValue());
 		}
 	}

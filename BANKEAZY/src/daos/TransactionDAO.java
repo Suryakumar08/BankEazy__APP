@@ -6,28 +6,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import exception.CustomBankException;
 import jdbc.JDBCConnector;
 import model.Transaction;
+import utilities.Validators;
 
 public class TransactionDAO implements TransactionDaoInterface {
 
 	private Connection connection = null;
 	private static final String addTransactionQuery = "insert into Transaction(customerId, accountNo, transactionAccountNo, description, type, status, time, closingBalance, transactionId, amount) values(?,?,?,?,?,?,?,?,?,?)";
 	private static final String lastTransactionIdQuery = "select MAX(transactionId) as maxId from Transaction";
-	private static final String getTransactionQuery = "select customerId, accountNo, transactionAccountNo, description, type, status, time, closingBalance, transactionId, amount from Transaction";
+	private static final String getTransactionQuery = "select customerId, accountNo, transactionAccountNo, description, type, status, time, closingBalance, transactionId, amount, referenceNo from Transaction";
 	
 	public TransactionDAO() throws CustomBankException {
 		connection = JDBCConnector.getConnection();
 	}
 
+	//create
 	@Override
-	public boolean addTransaction(Transaction transaction) throws CustomBankException {
-		try(PreparedStatement statement = connection.prepareStatement(addTransactionQuery)){
+	public long addTransaction(Transaction transaction) throws CustomBankException {
+		Validators.checkNull(transaction);
+		try(PreparedStatement statement = connection.prepareStatement(addTransactionQuery, Statement.RETURN_GENERATED_KEYS)){
 			statement.setObject(1, transaction.getCustomerId());
 			statement.setObject(2, transaction.getAccountNo());
 			statement.setObject(3, transaction.getTransactionAccountNo());
@@ -40,18 +42,24 @@ public class TransactionDAO implements TransactionDaoInterface {
 			statement.setObject(10, transaction.getAmount());
 			
 			int noOfRowsAffected = statement.executeUpdate();
-			if(noOfRowsAffected > 0) {
-				return true;
+			
+			if(noOfRowsAffected < 1) {
+				throw new CustomBankException(CustomBankException.TRANSACTION_FAILED);
 			}
-			else {
-				return false;
+			long referenceNo = 0;
+			try(ResultSet generatedKeys = statement.getGeneratedKeys()){
+				if(generatedKeys.next()) {
+					referenceNo = generatedKeys.getLong(1);
+				}
 			}
+			return referenceNo;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
 
+	
+	//read
 	@Override
 	public long getLastTransactionId() throws CustomBankException {
 		try (Statement statement = connection.createStatement()) {
@@ -69,44 +77,29 @@ public class TransactionDAO implements TransactionDaoInterface {
 	}
 
 	@Override
-	public List<Transaction> getTransactions(long accountNo, long from, long to) throws CustomBankException {
+	public Map<Long, Transaction> getTransactions(Transaction transaction, long from, long to, int limit, long offset) throws CustomBankException {
+		Validators.checkNull(transaction);
+		DAOHelper daoHelper = new DAOHelper();
 		StringBuilder query = new StringBuilder(getTransactionQuery);
-		query.append(" where accountNo = ? and time between ? and ?");
+		daoHelper.addWhereConditions(query, transaction);
+		query.append(" and time between ? and ? limit ? offset ?");
 		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
-			statement.setLong(1, accountNo);
-			statement.setLong(2, from);
-			statement.setLong(3, to);
-			List<Transaction> transactionsList = new ArrayList<>(); 
+			int parameterIndexToAdd = daoHelper.setFields(statement, transaction);
+			statement.setLong(parameterIndexToAdd++, from);
+			statement.setLong(parameterIndexToAdd++, to);
+			statement.setObject(parameterIndexToAdd++, limit);
+			statement.setObject(parameterIndexToAdd++, offset);
+			Map<Long, Transaction> transactionsMap = null; 
 			try(ResultSet transactions = statement.executeQuery()){
-				DAOHelper daoHelper = new DAOHelper();
 				Map<String, Method> settersMap = daoHelper.getSettersMap(Transaction.class);
 				while(transactions.next()) {
+					if(transactionsMap == null) {
+						transactionsMap = new HashMap<>();
+					}
 					Transaction currTransaction = daoHelper.mapResultSetToGivenClassObject(transactions, Transaction.class, settersMap);
-					transactionsList.add(currTransaction);
+					transactionsMap.put(currTransaction.getReferenceNo(), currTransaction);
 				}
-				return transactionsList;
-			}
-		} catch (SQLException e) {
-			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
-		}
-	}
-	
-	@Override
-	public List<Transaction> getTransactions(long from, long to) throws CustomBankException {
-		StringBuilder query = new StringBuilder(getTransactionQuery);
-		query.append(" where time between ? and ?");
-		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
-			statement.setLong(1, from);
-			statement.setLong(2, to);
-			List<Transaction> transactionsList = new ArrayList<>(); 
-			try(ResultSet transactions = statement.executeQuery()){
-				DAOHelper daoHelper = new DAOHelper();
-				Map<String, Method> settersMap = daoHelper.getSettersMap(Transaction.class);
-				while(transactions.next()) {
-					Transaction currTransaction = daoHelper.mapResultSetToGivenClassObject(transactions, Transaction.class, settersMap);
-					transactionsList.add(currTransaction);
-				}
-				return transactionsList;
+				return transactionsMap;
 			}
 		} catch (SQLException e) {
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);

@@ -7,12 +7,13 @@ import model.Account;
 
 public interface AccountDaoInterface {
 
-	public long addAccount(Account account) throws CustomBankException;
+	//create
+	long addAccount(Account account) throws CustomBankException;
 
-	public Map<Integer, Account> getAccounts(int userId) throws CustomBankException;
+	//read
+	Map<Long, Account> getAccounts(Account account, int limit, long offset) throws CustomBankException;
 
-	public Account getAccount(long accNo) throws CustomBankException;
-
-	public boolean updateAccount(Account account) throws CustomBankException;
+	//update
+	boolean updateAccount(Account account) throws CustomBankException;
 
 }

@@ -6,11 +6,15 @@ import exception.CustomBankException;
 import model.Branch;
 
 public interface BranchDaoInterface {
+	
+	//create
 	int addBranch(Branch branch) throws CustomBankException;
 	
-	Map<Integer, Branch> getBranches() throws CustomBankException;
+	//read
+	Map<Integer, Branch> getBranches(Branch branch, int limit, long offset) throws CustomBankException;
 	
+	//update
 	boolean updateBranch(Branch branch) throws CustomBankException;
+
 	
-	Branch getBranch(int branchId) throws CustomBankException;
 }

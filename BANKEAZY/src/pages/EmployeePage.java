@@ -1,11 +1,13 @@
 package pages;
 
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
+import helpers.BranchHelper;
+import helpers.CustomerHelper;
 import helpers.EmployeeHelper;
+import helpers.TransactionHelper;
 import model.Branch;
 import model.Customer;
 import model.Employee;
@@ -19,13 +21,16 @@ public class EmployeePage {
 
 	public static void run(int userId) throws CustomBankException {
 		EmployeeHelper helper = new EmployeeHelper();
+		CustomerHelper customerHelper = new CustomerHelper();
+		TransactionHelper transactionHelper = new TransactionHelper();
+		BranchHelper branchHelper = new BranchHelper();
 		
 		Employee currEmployee = helper.getEmployee(userId);
-		int empRole = currEmployee.getRole(1);
+		int empRole = currEmployee.getRole();
 		boolean continueProgram = true;
 		while (continueProgram) {
 			logger.info(
-					"1) Add Employee\n2) Add Customer\n3) Add Customer Account\n4) Edit User\n5) View Employee List\n6) View Employee\n7) View Customer List\n8) View Customer\n9) View Transaction Details\n10) View Profile\n11) Edit Profile\n12) Add Branch\n13) Edit branch details\n14) Show all branches\n15) Logout\n\nEnter your choice : \n");
+					"1) Add Employee\n2) Add Customer\n3) Add Customer Account\n4) Edit User\n5) View Employee List\n6) View Employee\n7) View Customer List\n8) View Customer\n9) View Transaction Details of customer\n10) View Transaction details of a Account\n11) View Profile\n12) Edit Profile\n13) Add Branch\n14) Edit branch details\n15) Show all branches\n16) Logout\n\nEnter your choice : \n");
 			try {
 				int employeeChoice = InputHelper.getInt();
 				switch (employeeChoice) {
@@ -58,7 +63,7 @@ public class EmployeePage {
 				}
 				case 5: {
 					if (empRole == 1) {
-						Map<Integer, Employee> employees = helper.getEmployees();
+						Map<Integer, Employee> employees = helper.getEmployees(new Employee(), 50, 0);
 						Utilities.printObjects(employees);
 					} else {
 						logger.fine("Only Admins have the permission!");
@@ -78,22 +83,25 @@ public class EmployeePage {
 					break;
 				}
 				case 7: {
-					Map<Integer, Customer> customers = helper.getCustomers();
+					Customer customer = new Customer();
+					Map<Integer, Customer> customers = customerHelper.getCustomers(customer, 50, 0);
 					Utilities.printObjects(customers);
 					break;
 				}
 				case 8:{
 					logger.info("Enter Customer Id : ");
 					int customerId = InputHelper.getInt();
-					Customer customer = helper.getCustomer(customerId);
+					Customer customer = customerHelper.getCustomer(customerId);
 					logger.fine(customer.toString());
 					break;
 				}
 				case 9: {
-					int currOffset = 0;
+					logger.info("Enter customer Id : ");
+					int customerId = InputHelper.getInt();
+					long currOffset = 0;
 					boolean continuePrintTransaction = true;
 					do{
-						List<Transaction> transactions = helper.getAllTransactions();
+						Map<Long, Transaction> transactions = transactionHelper.getCustomerTransactions(customerId, (Utilities.getCurrentTime() - (long)(30 * 3600000 * 24)), Utilities.getCurrentTime(), 50, currOffset);
 						if(transactions.size() == 0) {
 							logger.warning("No more Transactions!!!");
 							continuePrintTransaction = false;
@@ -111,16 +119,40 @@ public class EmployeePage {
 					}while(continuePrintTransaction);
 					break;
 				}
-				case 10: {
+				case 10:{
+					logger.info("Enter Account Number : ");
+					long accountNo = InputHelper.getLong();
+					long currOffset = 0;
+					boolean continuePrintTransaction = true;
+					do{
+						Map<Long, Transaction> transactions = transactionHelper.getAccountTransactions(accountNo, (Utilities.getCurrentTime() - (30l * 3600000l * 24l)), Utilities.getCurrentTime(), 50, currOffset);
+						if(transactions.size() == 0) {
+							logger.warning("No more Transactions!!!");
+							continuePrintTransaction = false;
+							continue;
+						}
+						Utilities.printObjects(transactions);
+						logger.info("1. Next\n2. Back");
+						int choice = InputHelper.getInt();
+						if(choice == 1) {
+							currOffset += 50;
+						}
+						else {
+							currOffset -= 50;
+						}
+					}while(continuePrintTransaction);
+					break;
+				}
+				case 11: {
 					Employee employee = helper.getEmployee(userId);
 					logger.fine(employee.toString());
 					break;
 				}
-				case 11: {
+				case 12: {
 					logger.info("Edit Profile");
 					break;
 				}
-				case 12:{
+				case 13:{
 					if(empRole == 1) {
 						AddBranchPage.run();
 					}
@@ -129,7 +161,7 @@ public class EmployeePage {
 					}
 					break;
 				}
-				case 13:{
+				case 14:{
 					if(empRole == 1) {
 						EditBranchPage.run();
 					}
@@ -138,12 +170,12 @@ public class EmployeePage {
 					}
 					break;
 				}
-				case 14:{
-					Map<Integer, Branch> branches = helper.getAllBranches();
+				case 15:{
+					Map<Integer, Branch> branches = branchHelper.getAllBranches();
 					Utilities.printObjects(branches);
 					break;
 				}
-				case 15: {
+				case 16: {
 					logger.info("Logout");
 					continueProgram = false;
 					break;

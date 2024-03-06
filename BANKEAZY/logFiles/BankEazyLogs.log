@@ -1,0 +1,2198 @@
+
+1 | 1709615285004 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709615285039 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709615634588 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709615634621 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709615644719 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709615644752 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709623103355 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709623103377 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709623111457 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709623112867 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709623118156 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709623118156 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709623120940 | global | pages.ShowCustomerProfilePage | run
+User [userId=5
+name=Ram
+mobile=9393454562
+dob=20/Feb/2001 12:00:00
+type=Customer
+status=Active]
+
+Customer [pan=OQ56BO2237
+aadhar=431245670986]
+
+
+1 | 1709623120940 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709623130737 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623130737 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623130750 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623130751 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623141763 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709623141763 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709623162244 | global | pages.AccountsPage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709623162245 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623162245 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623162246 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623162246 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623201982 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709623202002 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709623203738 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709623204858 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709623208712 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709623208712 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709623211032 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623211033 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623211040 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623211040 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623212040 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709623212041 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709623216231 | global | pages.AccountsPage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709623216233 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623216233 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623216233 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623216234 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623450790 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709623450811 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709623452663 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709623453932 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709623459331 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709623459331 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709623461338 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623461339 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623461347 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623461347 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623462026 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709623462027 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709623464621 | global | pages.AccountsPage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709623464622 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623464622 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623464622 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623464622 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623845742 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709623845762 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709623847640 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709623848893 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709623853294 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709623853295 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709623855157 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623855157 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623855164 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623855165 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623856684 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709623856685 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709623864534 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709623864535 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709623864535 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709623864535 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709623864535 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624156881 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709624156901 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709624158897 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709624160498 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709624164694 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709624164694 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709624166456 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624166456 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624166464 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624166465 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624171442 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709624171443 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709624173113 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709624173113 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624173114 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624173114 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624173114 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624723748 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709624723767 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709624725734 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709624727307 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709624738539 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709624738539 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709624741915 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624741915 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624741937 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624741938 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624743343 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709624743344 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709624746204 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709624746204 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624746204 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624746204 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624746204 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624800669 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709624800688 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709624802053 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709624805243 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709624808830 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709624808830 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709624811354 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624811355 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624811362 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624811362 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624811776 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709624811777 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709624813769 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709624813770 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624813770 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624813770 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624813771 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624873548 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709624873567 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709624874764 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709624878794 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709624881915 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709624881915 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709624885454 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624885455 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624885465 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624885465 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624886824 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709624886825 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709624888278 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709624888278 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709624888278 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709624888278 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709624888278 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625025486 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709625025512 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709625027691 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709625029698 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709625035458 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709625035458 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709625038448 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625038449 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625038456 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625038456 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625040254 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709625040255 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709625041280 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709625041280 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625041280 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625041281 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625041281 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625137773 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709625137793 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709625139207 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709625140696 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709625144598 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709625144598 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709625147134 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625147135 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625147149 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625147149 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625149813 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709625149814 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709625152956 | global | utilities.Utilities | printObjects
+Transaction [transactionId=2, customerId=5, accountNo=1000000000000001, transactionAccountNo=1000000000000002, description=cake amount, type=Debit, status=Success, time=28/Feb/2024 - 12-40-01, closingBalance=1050.0, amount=200.0referenceNo=null]
+
+1 | 1709625152957 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625152957 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625152957 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625152957 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625532527 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709625532547 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709625534262 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709625535788 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709625538841 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709625538842 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709625542770 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625542770 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625542786 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625542787 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625543991 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709625543992 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709625545232 | global | pages.AccountsPage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709625545233 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625545233 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625545233 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625545233 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625562160 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709625562179 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709625563411 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709625565084 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709625568982 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709625568982 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709625571841 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625571841 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625571850 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625571850 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625572939 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709625572940 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709625574955 | global | utilities.Utilities | printObjects
+Transaction [transactionId=2, customerId=5, accountNo=1000000000000001, transactionAccountNo=1000000000000002, description=cake amount, type=Debit, status=Success, time=28/Feb/2024 - 12-40-01, closingBalance=1050.0, amount=200.0 referenceNo=null]
+
+1 | 1709625574956 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625574956 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625574956 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625574956 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625718283 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709625718305 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709625720185 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709625721400 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709625725251 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709625725251 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709625727604 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625727604 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625727613 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625727613 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625728632 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709625728632 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709625729732 | global | utilities.Utilities | printObjects
+Transaction [transactionId=2, customerId=5, accountNo=1000000000000001, transactionAccountNo=1000000000000002, description=cake amount, type=Debit, status=Success, time=28/Feb/2024 - 12-40-01, closingBalance=1050.0, amount=200.0 referenceNo=null]
+
+1 | 1709625729733 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625729733 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625729733 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625729733 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625821143 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709625821163 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709625822580 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709625823964 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709625827361 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709625827361 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709625829082 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625829082 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625829090 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625829090 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625830344 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709625830345 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709625831761 | global | utilities.Utilities | printObjects
+Transaction [transactionId=2, customerId=5, accountNo=1000000000000001, transactionAccountNo=1000000000000002, description=cake amount, type=Debit, status=Success, time=28/Feb/2024 - 12-40-01, closingBalance=1050.0, amount=200.0 referenceNo=null]
+
+1 | 1709625831761 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709625831761 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709625831762 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709625831762 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709628417625 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709628417655 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709628420216 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709628421025 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709628431818 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709628431819 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709628436252 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709628436252 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709628436260 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709628436261 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709628437338 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709628437339 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709628439353 | global | pages.AccountsPage | run
+No Transactions Exist!
+
+1 | 1709628439354 | global | pages.AccountsPage | run
+Select Account : 
+
+1 | 1709628439354 | global | pages.AccountsPage | printAccounts
+SI.NO                   Account Details
+
+1 | 1709628439355 | global | pages.AccountsPage | printAccounts
+1                    Account [accountNo=1000000000000001, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709628439355 | global | pages.AccountsPage | printAccounts
+2                    Account [accountNo=1000000000000002, customerId=5, balance=1000.0, branchId=1, status=Active]
+
+1 | 1709628487317 | global | pages.AccountsPage | run
+1) Deposit Amount
+2) Withdraw Amount
+3) Transfer Amount
+4) View Transaction History
+5) View Account Details
+6) Exit
+
+1 | 1709628487318 | global | pages.AccountsPage | run
+Enter your choice : 
+
+1 | 1709628488920 | global | pages.AccountsPage | run
+Thank you!
+
+1 | 1709628488921 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709628491362 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709628491363 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709628495459 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709628736729 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709628736761 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709641795366 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709641795401 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709641798385 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709641799295 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709641801657 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709641807864 | global | pages.EditBranchPage | run
+Enter branchId to edit : 
+
+1 | 1709641812107 | global | pages.EditBranchPage | run
+Branch [id=1, name=Kottaiyur, address=131, Kottaiyur, Karaikudi - 630106, ifsc=BEZB0000001]
+
+1 | 1709641812107 | global | pages.EditBranchPage | run
+1) Edit Branch Name
+2) Edit Branch Address
+3) Edit IFSC
+4) Edit!!!
+
+1 | 1709641855387 | global | pages.EditBranchPage | run
+Enter new name : 
+
+1 | 1709641860502 | global | pages.EditBranchPage | run
+1) Edit Branch Name
+2) Edit Branch Address
+3) Edit IFSC
+4) Edit!!!
+
+1 | 1709641864284 | global | pages.EditBranchPage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!java.sql.SQLSyntaxErrorException: Unknown column 'model.Branch.id' in 'field list'
+
+1 | 1709641864285 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709642078756 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709642078790 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709642080151 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709642080573 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709642082664 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709642092318 | global | pages.EditBranchPage | run
+Enter branchId to edit : 
+
+1 | 1709642094715 | global | pages.EditBranchPage | run
+Branch [id=1, name=Kottaiyur, address=131, Kottaiyur, Karaikudi - 630106, ifsc=BEZB0000001]
+
+1 | 1709642094715 | global | pages.EditBranchPage | run
+1) Edit Branch Name
+2) Edit Branch Address
+3) Edit IFSC
+4) Edit!!!
+
+1 | 1709642096712 | global | pages.EditBranchPage | run
+Enter new name : 
+
+1 | 1709642100331 | global | pages.EditBranchPage | run
+1) Edit Branch Name
+2) Edit Branch Address
+3) Edit IFSC
+4) Edit!!!
+
+1 | 1709642102588 | global | pages.EditBranchPage | run
+Edit Successful
+
+1 | 1709642102588 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709644615008 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709644615041 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709644757123 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709644829201 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709644831721 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709644831721 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709644935379 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709644935413 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709644936646 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709644949601 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709644952501 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709644968811 | global | pages.EmployeePage | run
+Logout
+
+1 | 1709644968811 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709644968812 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709644970076 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645020610 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645020655 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645022017 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645022762 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645024741 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709645029133 | global | pages.EmployeePage | run
+Logout
+
+1 | 1709645029133 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645029134 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645030393 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645094296 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645094338 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645095888 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645096656 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645098481 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709645100399 | global | pages.EmployeePage | run
+Logout
+
+1 | 1709645100399 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645100400 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645103419 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645266528 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645266563 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645268468 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645268991 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645270827 | global | pages.EmployeePage | run
+1) Add Employee
+2) Add Customer
+3) Add Customer Account
+4) Edit User
+5) View Employee List
+6) View Employee
+7) View Customer List
+8) View Customer
+9) View Transaction Details of customer
+10) View Transaction details of a Account
+11) View Profile
+12) Edit Profile
+13) Add Branch
+14) Edit branch details
+15) Show all branches
+16) Logout
+
+Enter your choice : 
+
+
+1 | 1709645273243 | global | pages.EmployeePage | run
+Logout
+
+1 | 1709645273245 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645273245 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645275381 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645417894 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645417931 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645419937 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645420963 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645424659 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709645424659 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709645428923 | global | pages.ShowCustomerProfilePage | run
+User [userId=5
+name=Ram
+mobile=9393454562
+dob=20/Feb/2001 12:00:00
+type=Customer
+status=Active]
+
+Customer [pan=OQ56BO2237
+aadhar=431245670986]
+
+
+1 | 1709645428923 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Change Password
+3 -> Accounts
+4 -> logout
+
+1 | 1709645432975 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645485063 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645485097 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645487125 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645488305 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645491603 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709645491603 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645493684 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645503518 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709645516837 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645519617 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709645519618 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645551081 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645551082 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645552747 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645554910 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645554941 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645578437 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645580055 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645583789 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709645583789 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645585343 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645588596 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709645591556 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645593704 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709645593705 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645655669 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645655670 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645656790 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645658850 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645658881 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645660698 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645661945 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645666152 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709645666152 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645669062 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645671852 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709645675666 | global | pages.UpdateCustomerProfilePage | run
+Invalid mobile number!
+
+1 | 1709645675667 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645681183 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645684601 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709645687322 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645688888 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709645688888 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645821043 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645821044 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645822827 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645838612 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645838646 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645840653 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645841948 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645847096 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709645847097 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645848541 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645850355 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709645853600 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645855059 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709645855060 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645886355 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645886355 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645886684 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709645888680 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709645888712 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709645889693 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709645891129 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709645894548 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709645894548 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709645895794 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645897416 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709645899810 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709645901411 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709645901412 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646155715 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646155715 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646156611 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709646158932 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646158963 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646160122 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709646161240 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709646166271 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709646166272 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646167528 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646169005 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709646171913 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646173227 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709646173228 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646731861 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646731862 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646748374 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709646751105 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646751126 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646760639 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709646761708 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709646766131 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709646766132 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646768445 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646809618 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709646815058 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646826042 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709646826042 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646879960 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646879960 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646880231 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709646882095 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646882116 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646884192 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709646885322 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709646889042 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709646889042 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646890300 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646891888 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709646895160 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646896433 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709646896434 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646973852 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646973853 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646974639 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709646976856 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709646976875 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709646979299 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709646980540 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709646984628 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709646984628 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709646986430 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646988333 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709646995021 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709646998273 | global | pages.UpdateCustomerProfilePage | run
+ERROR OCCURRED! Sorry for the Inconvenience!!!
+
+1 | 1709646998274 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709655646491 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709655646491 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709655648988 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709655650956 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709655650988 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709655671058 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709655674021 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709655679081 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709655679082 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709655681444 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709655684753 | global | pages.UpdateCustomerProfilePage | run
+Enter new mobile : 
+
+1 | 1709655688078 | global | pages.UpdateCustomerProfilePage | run
+1 -> Name
+2 -> Password
+3 -> Mobile
+4 -> EDIT
+
+1 | 1709655690061 | global | pages.UpdateCustomerProfilePage | run
+Edit Successful!
+
+1 | 1709655690062 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709655698397 | global | pages.ShowCustomerProfilePage | run
+User [userId=5
+name=Ram
+mobile=9876543210
+dob=20/Feb/2001 12:00:00
+type=Customer
+status=Active]
+
+Customer [pan=OQ56BO2237
+aadhar=431245670986]
+
+
+1 | 1709655698398 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709655748794 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709655748795 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709655768996 | global | pages.BankEazyApp | main
+Thanks you! Come again!!
+
+1 | 1709655779228 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709655779262 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709655814740 | global | pages.LoginPage | run
+Enter User Id : 
+
+1 | 1709655815420 | global | pages.LoginPage | run
+Enter password : 
+
+1 | 1709655820241 | global | pages.CustomerPage | run
+------------Hello Customer!!!-------------
+
+1 | 1709655820242 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709655822587 | global | pages.ShowCustomerProfilePage | run
+User [userId=5
+name=Ram
+mobile=9876543210
+dob=20/Feb/2001
+type=Customer
+status=Active]
+
+Customer [pan=OQ56BO2237
+aadhar=431245670986]
+
+
+1 | 1709655822588 | global | pages.CustomerPage | run
+1 -> View Profile
+2 -> Edit profile
+3 -> Accounts
+4 -> logout
+
+1 | 1709655884851 | global | pages.BankEazyApp | main
+-----------Welcome to BankEazy Bank------------
+
+1 | 1709655884852 | global | pages.BankEazyApp | main
+
+1)Login
+Any other digit)Exit
+
+Enter your option to proceed : 
+
+1 | 1709655886853 | global | pages.BankEazyApp | main
+Thanks you! Come again!!

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import exception.CustomBankException;
 import pages.BankEazyApp;
 
 public class Utilities {
@@ -29,7 +30,7 @@ public class Utilities {
 	public static String getDateString(long millis) {
 		Instant instant = Instant.ofEpochMilli(millis);
 		ZonedDateTime date = ZonedDateTime.ofInstant(instant, ZoneId.systemDefault());
-		String resultDate = date.format(DateTimeFormatter.ofPattern("dd/MMM/yyyy hh:mm:ss"));
+		String resultDate = date.format(DateTimeFormatter.ofPattern("dd/MMM/yyyy"));
 		return resultDate;
 	}
 	
@@ -40,13 +41,15 @@ public class Utilities {
 		return resultDateTime;
 	}
 	
-	public static <K, V> void printObjects(Map<K, V> map) {
+	public static <K, V> void printObjects(Map<K, V> map) throws CustomBankException {
+		Validators.checkNull(map);
 		for(V value : map.values()) {
 			logger.fine(value.toString());
 		}
 	}
 
-	public static <T> void printObjects(List<T> objects) {
+	public static <T> void printObjects(List<T> objects) throws CustomBankException {
+		Validators.checkNull(objects);
 		for(T obj : objects) {
 			logger.fine(obj.toString());
 		}

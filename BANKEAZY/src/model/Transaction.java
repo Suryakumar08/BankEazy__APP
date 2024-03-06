@@ -13,6 +13,7 @@ public class Transaction {
 	private Long time;
 	private Double closingBalance;
 	private Double amount;
+	private Long referenceNo;
 	public Long getTransactionId() {
 		return transactionId;
 	}
@@ -25,13 +26,13 @@ public class Transaction {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	public long getAccountNo() {
+	public Long getAccountNo() {
 		return accountNo;
 	}
 	public void setAccountNo(long accountNo) {
 		this.accountNo = accountNo;
 	}
-	public long getTransactionAccountNo() {
+	public Long getTransactionAccountNo() {
 		return transactionAccountNo;
 	}
 	public void setTransactionAccountNo(long transactionAccountNo) {
@@ -44,13 +45,13 @@ public class Transaction {
 		this.description = description;
 	}
 	
-	public double getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 	public void setTypeFromString(String type) {
@@ -87,29 +88,35 @@ public class Transaction {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public long getTime() {
+	public Long getTime() {
 		return time;
 	}
 	public void setTime(long time) {
 		this.time = time;
 	}
-	public double getClosingBalance() {
+	public Double getClosingBalance() {
 		return closingBalance;
 	}
 	public void setClosingBalance(double closingBalance) {
 		this.closingBalance = closingBalance;
+	}
+	public Long getReferenceNo() {
+		return referenceNo;
+	}
+	public void setReferenceNo(Long referenceNo) {
+		this.referenceNo = referenceNo;
 	}
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", customerId=" + customerId
 				+ ", accountNo=" + accountNo + ", transactionAccountNo=" + transactionAccountNo + ", description="
 				+ description + ", type=" + getTypeAsString() + ", status=" + (status == 1 ? "Success" : "Failed") + ", time=" + Utilities.getDateTimeString(time) + ", closingBalance="
-				+ closingBalance + ", amount=" + amount + "]";
+				+ closingBalance + ", amount=" + amount + " referenceNo=" + referenceNo + "]";
 	}
 }

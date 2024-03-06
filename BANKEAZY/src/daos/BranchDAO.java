@@ -12,6 +12,7 @@ import java.util.Map;
 import exception.CustomBankException;
 import jdbc.JDBCConnector;
 import model.Branch;
+import utilities.Validators;
 
 public class BranchDAO implements BranchDaoInterface{
 	
@@ -23,6 +24,7 @@ public class BranchDAO implements BranchDaoInterface{
 		connection = JDBCConnector.getConnection();
 	}
 
+	//create
 	@Override
 	public int addBranch(Branch branch) throws CustomBankException {
 		try(PreparedStatement query = connection.prepareStatement(addBranchQuery, Statement.RETURN_GENERATED_KEYS)){
@@ -50,15 +52,26 @@ public class BranchDAO implements BranchDaoInterface{
 		}
 	}
 
+	
+	//read
 	@Override
-	public Map<Integer, Branch> getBranches() throws CustomBankException {
-		Map<Integer, Branch> branchMap;
-		try(Statement statement = connection.createStatement()){
-			try(ResultSet branches = statement.executeQuery(selectBranchQuery)){
-				branchMap = new HashMap<>();
-				DAOHelper daoHelper = new DAOHelper();
+	public Map<Integer, Branch> getBranches(Branch branch, int limit, long offset) throws CustomBankException {
+		Validators.checkNull(branch);
+		Map<Integer, Branch> branchMap = null;
+		DAOHelper daoHelper = new DAOHelper();
+		StringBuilder query = new StringBuilder(selectBranchQuery);
+		daoHelper.addWhereConditions(query, branch);
+		query.append(" limit ? offset ?");
+		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
+			int indexToAdd = daoHelper.setFields(statement, branch);
+			statement.setObject(indexToAdd++, limit);
+			statement.setObject(indexToAdd++, offset);
+			try(ResultSet branches = statement.executeQuery()){
 				Map<String, Method> settersMap = daoHelper.getSettersMap(Branch.class);
 				while(branches.next()) {
+					if(branchMap == null) {
+						branchMap = new HashMap<>();
+					}
 					Branch currBranch = daoHelper.mapResultSetToGivenClassObject(branches, Branch.class, settersMap);
 					branchMap.put(currBranch.getId(), currBranch);
 				}
@@ -69,10 +82,14 @@ public class BranchDAO implements BranchDaoInterface{
 		}
 	}
 
+	
+	//update
 	@Override
 	public boolean updateBranch(Branch branch) throws CustomBankException {
+		Validators.checkNull(branch);
 		DAOHelper helper = new DAOHelper();
-		StringBuilder updateBranchQuery = new StringBuilder(helper.generateUpdateQuery(branch));
+		StringBuilder updateBranchQuery = new StringBuilder("update Branch ");
+		updateBranchQuery.append(helper.generateUpdateQuery(updateBranchQuery));
 		updateBranchQuery.append(" where id = ?");
 		try(PreparedStatement statement = connection.prepareStatement(updateBranchQuery.toString())){
 			int noOfParametersAdded = helper.setFields(statement, branch);
@@ -84,25 +101,6 @@ public class BranchDAO implements BranchDaoInterface{
 		}
 	}
 
-	@Override
-	public Branch getBranch(int branchId) throws CustomBankException {
-		Branch currBranch = null;
-		StringBuilder query = new StringBuilder(selectBranchQuery);
-		query.append(" where id = ?");
-		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
-			statement.setObject(1, branchId);
-			try(ResultSet branch = statement.executeQuery()){
-				DAOHelper daoHelper = new DAOHelper();
-				Map<String, Method> settersMap = daoHelper.getSettersMap(Branch.class);
-				if(branch.next()) {
-					currBranch = daoHelper.mapResultSetToGivenClassObject(branch, Branch.class, settersMap);
-				}
-				return currBranch;
-			}
-		} catch (SQLException e) {
-			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
-		}
-	}
 	
 	
 }

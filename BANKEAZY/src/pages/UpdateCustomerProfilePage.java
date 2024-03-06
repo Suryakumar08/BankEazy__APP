@@ -3,9 +3,8 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.EmployeeHelper;
+import helpers.CustomerHelper;
 import model.Customer;
-import model.User;
 import utilities.InputHelper;
 import utilities.Validators;
 
@@ -14,10 +13,10 @@ public class UpdateCustomerProfilePage {
 	private static Logger logger = BankEazyApp.logger;
 
 	public static void run(int customerId) throws CustomBankException {
-		EmployeeHelper helper = new EmployeeHelper();
+		CustomerHelper helper = new CustomerHelper();
 		try {
 			boolean continueProgram = true;
-			User editCustomer = new Customer();
+			Customer editCustomer = new Customer();
 			int noOfChanges = 0;
 			while (continueProgram) {
 				logger.info("1 -> Name\n2 -> Password\n3 -> Mobile\n4 -> EDIT");
@@ -57,11 +56,11 @@ public class UpdateCustomerProfilePage {
 				logger.fine("No Change required!");
 			}
 			else {
-				editCustomer.setUserId(customerId);
-//				boolean isEdited = helper.editUser(editCustomer);
-//				logger.fine(isEdited ? "Edit Successful!" : "Edit Failed!!!");
+				boolean isEdited = helper.updateCustomer(editCustomer, customerId);
+				logger.fine(isEdited ? "Edit Successful!" : "Edit Failed!!!");
 			}
 		} catch (CustomBankException e) {
+			e.printStackTrace();
 			logger.warning(e.getMessage());
 		}
 	}

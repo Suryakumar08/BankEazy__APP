@@ -3,7 +3,8 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.CustomerHelper;
+import helpers.TransactionHelper;
+import helpers.UserHelper;
 import utilities.InputHelper;
 
 public class DepositAmountPage {
@@ -11,7 +12,7 @@ public class DepositAmountPage {
 	private static Logger logger = BankEazyApp.logger;
 
 	public static void run(long accountNo, int userId) throws CustomBankException{
-		CustomerHelper helper = new CustomerHelper();
+		UserHelper helper = new UserHelper();
 		try {
 			double amount = -1;
 			while(true) {
@@ -25,11 +26,12 @@ public class DepositAmountPage {
 			logger.info("Enter your password : ");
 			String password = InputHelper.getString();
 
-			if (helper.checkPassword(userId, password)) {
-				CustomerHelper customerHelper = new CustomerHelper();
-				boolean isDeposited = customerHelper.depositAmount(accountNo, amount);
-				if(isDeposited) {
+			if (helper.checkPassword(password, helper.getUser(userId))) {
+				TransactionHelper transactionHelper = new TransactionHelper();
+				long refNo = transactionHelper.depositAmount(accountNo, amount);
+				if(refNo != -1) {
 					logger.fine("Amount deposited successfully!!!");
+					logger.fine("Transaction reference No : " + refNo);
 				}
 				else {
 					logger.warning("Deposit failed.. Please try after sometime...");

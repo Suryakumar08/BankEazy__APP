@@ -3,13 +3,14 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.CustomerHelper;
+import helpers.TransactionHelper;
+import helpers.UserHelper;
 import utilities.InputHelper;
 
 public class WithdrawAmountPage {
 	private static Logger logger = BankEazyApp.logger;
 	public static void run(long accountNo, int customerId) throws CustomBankException{
-		CustomerHelper helper = new CustomerHelper();
+		UserHelper helper = new UserHelper();
 		try {
 			double amount;
 			while(true) {
@@ -24,10 +25,10 @@ public class WithdrawAmountPage {
 			logger.info("Enter your password : ");
 			String password = InputHelper.getString();
 
-			if (helper.checkPassword(customerId, password)) {
-				CustomerHelper customerHelper = new CustomerHelper();
-				boolean isWithdrawable = customerHelper.withdrawAmount(accountNo, amount);
-				if(isWithdrawable) {
+			if (helper.checkPassword(password, helper.getUser(customerId))) {
+				TransactionHelper transactionHelper = new TransactionHelper();
+				long refNo = transactionHelper.withdrawAmount(accountNo, amount);
+				if(refNo != -1) {
 					logger.fine("Amount withdrawn successfull!!! You can collect your cash.!");
 				}
 				else {

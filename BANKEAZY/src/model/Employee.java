@@ -1,40 +1,42 @@
 package model;
 
+import utilities.Utilities;
+
 public class Employee extends User {
-	private Integer id;
+	private Integer userId;
 	private Integer salary;
 	private Long joiningDate;
 	private Integer branchId;
 	private Integer role;		//1 -> Admin, 2 -> Employee
 	
-	public int getId() {
-		return id;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public int getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public long getJoiningDate() {
+	public Long getJoiningDate() {
 		return joiningDate;
 	}
 	public void setJoiningDate(long joinedDate) {
 		this.joiningDate = joinedDate;
 	}
-	public int getBranchId() {
+	public Integer getBranchId() {
 		return branchId;
 	}
 	public void setBranchId(int branchId) {
 		this.branchId = branchId;
 	}
-	public int getRole(int roleType) {
+	public Integer getRole() {
 		return role;
 	}
-	public String getRoleAsString(String roleType) {
+	public String getRoleAsString() {
 		if(role == 1) {
 			return "Admin";
 		}
@@ -51,8 +53,8 @@ public class Employee extends User {
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "Employee [salary=" + salary + "\njoinedDate=" + joiningDate + "\nbranchId=" + branchId
-				+ "\nrole=" + role + "]\n";
+		return super.toString() + "Employee [salary=" + salary + "\njoinedDate=" + Utilities.getDateString(joiningDate) + "\nbranchId=" + branchId
+				+ "\nrole=" + getRoleAsString() + "]\n";
 	}
 	
 	

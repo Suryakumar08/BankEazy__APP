@@ -1,15 +1,15 @@
 package model;
 
 public class Customer extends User{
-	private int id;
+	private Integer userId;
 	private String pan;
 	private String aadhar;
 
-	public int getId() {
-		return id;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getPan() {
 		return pan;
@@ -25,7 +25,7 @@ public class Customer extends User{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\nCustomer [pan=" + pan + "\naadhar=" + aadhar + "]\n";
+		return super.toString() + "\nCustomer [pan=" + pan + "\naadhar=" + aadhar + "]\n\n";
 	}
 	
 	

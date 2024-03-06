@@ -3,7 +3,7 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.EmployeeHelper;
+import helpers.AccountHelper;
 import model.Account;
 import utilities.InputHelper;
 
@@ -12,7 +12,7 @@ public class AddAccountPage {
 	private static Logger logger = BankEazyApp.logger;
 
 	public static long run(int branchId) throws CustomBankException{
-		EmployeeHelper helper = new EmployeeHelper();
+		AccountHelper helper = new AccountHelper();
 		while (true) {
 			try {
 				logger.fine("Create Account for customer : ");

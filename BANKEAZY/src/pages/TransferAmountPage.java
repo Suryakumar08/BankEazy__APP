@@ -3,7 +3,8 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.CustomerHelper;
+import helpers.TransactionHelper;
+import helpers.UserHelper;
 import model.Transaction;
 import utilities.InputHelper;
 import utilities.Validators;
@@ -13,7 +14,8 @@ public class TransferAmountPage {
 
 	public static void run(long accountNo, int customerId) throws CustomBankException {
 		boolean continueProgram = true;
-		CustomerHelper helper = new CustomerHelper();
+		UserHelper userHelper = new UserHelper();
+		TransactionHelper transactionHelper = new TransactionHelper();
 		while (continueProgram) {
 			try {
 				logger.fine("1) Transfer amount within the bank\n2) Transfer amount outside of the bank\n3) Exit");
@@ -35,6 +37,13 @@ public class TransferAmountPage {
 							break;
 						}
 					}
+					
+					logger.info("Enter password : ");
+					String password = InputHelper.getString();
+					
+					if(!userHelper.checkPassword(password, userHelper.getUser(customerId))) {
+						throw new CustomBankException(CustomBankException.INVALID_PASSWORD);
+					}
 
 					Transaction currTransaction = new Transaction();
 					currTransaction.setAccountNo(accountNo);
@@ -44,10 +53,11 @@ public class TransferAmountPage {
 					currTransaction.setAmount(amount);
 					currTransaction.setTypeFromString("Debit");
 
-					boolean isSuccess = helper.makeIntraBankTransaction(currTransaction);
+					long referenceNo = transactionHelper.makeIntraBankTransaction(currTransaction);
 
-					if (isSuccess) {
-						logger.info("Transaction Success!!!");
+					if (referenceNo != -1) {
+						logger.fine("Transaction Success!!!");
+						logger.fine("Transaction Reference No : " + referenceNo);
 					} else {
 						logger.warning("Transaction Failed!!");
 					}
@@ -71,6 +81,13 @@ public class TransferAmountPage {
 						throw new CustomBankException(CustomBankException.ERROR_OCCURRED + "Please Enter valid amount!!!");
 					}
 					
+					logger.info("Enter password : ");
+					String password = InputHelper.getString();
+					
+					if(!userHelper.checkPassword(password, userHelper.getUser(customerId))) {
+						throw new CustomBankException(CustomBankException.INVALID_PASSWORD);
+					}
+					
 					Transaction currTransaction = new Transaction();
 					currTransaction.setAccountNo(accountNo);
 					currTransaction.setCustomerId(customerId);
@@ -79,10 +96,11 @@ public class TransferAmountPage {
 					currTransaction.setAmount(amount);
 					currTransaction.setTypeFromString("Debit");
 
-					boolean isSuccess = helper.makeInterBankTransaction(currTransaction);
+					long referenceNo = transactionHelper.makeInterBankTransaction(currTransaction);
 
-					if (isSuccess) {
+					if (referenceNo != -1) {
 						logger.info("Transaction Success!!!");
+						logger.fine("Transaction Reference No : " + referenceNo);
 					} else {
 						logger.warning("Transaction Failed!!");
 					}

@@ -5,7 +5,7 @@ import utilities.Utilities;
 public class User {
 	
 	
-	private Integer userId;
+	private Integer id;
 	private String name;
 	private String password;
 	private String mobile;
@@ -13,11 +13,11 @@ public class User {
 	private Long dob;
 	private Integer type;		//1 -> Employee, 0 -> Customer
 	private Integer status;		//1 -> Active, 0 -> Inactive
-	public int getUserId() {
-		return userId;
+	public Integer getId() {
+		return id;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -43,16 +43,16 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public long getDob() {
+	public Long getDob() {
 		return dob;
 	}
 	public void setDob(long dob) {
 		this.dob = dob;
 	}
-	public int getType(int requestingType) {
+	public Integer getType() {
 		return this.type;
 	}
-	public String getType(String requestingType) {
+	public String getTypeAsString() {
 		if(this.type == 1) {
 			return "Employee";
 		}
@@ -61,16 +61,16 @@ public class User {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public void setType(String type) {
+	public void setTypeFromString(String type) {
 		if(type.equalsIgnoreCase("employee")) {
 			this.type = 1;
 		}
 		else this.type = 0;
 	}
-	public int getStatus(int requestingType) {
+	public Integer getStatus() {
 		return this.status;
 	}
-	public String getStatus(String requestingType) {
+	public String getStatusAsString() {
 		if(this.status == 0) {
 			return "Inactive";
 		}
@@ -79,7 +79,7 @@ public class User {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public void setStatus(String status) {
+	public void setStatusFromString(String status) {
 		if(status.equalsIgnoreCase("active")) {
 			this.status = 1;
 		}
@@ -98,7 +98,7 @@ public class User {
 		if(status == 1) {
 			userStatus = "Active";
 		}
-		return "User [userId=" + userId + "\nname=" + name + "\nmobile=" + mobile + "\ndob="
+		return "User [userId=" + id + "\nname=" + name + "\nmobile=" + mobile + "\ndob="
 				+ Utilities.getDateString(dob) + "\ntype=" + userType +"\nstatus=" + userStatus + "]\n";
 	}
 	

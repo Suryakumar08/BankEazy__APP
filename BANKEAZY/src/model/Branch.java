@@ -5,7 +5,7 @@ public class Branch {
 	private String name;
 	private String address;
 	private String ifsc;
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {

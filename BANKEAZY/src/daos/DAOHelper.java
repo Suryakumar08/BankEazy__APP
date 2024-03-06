@@ -77,8 +77,7 @@ public class DAOHelper {
 	public String generateUpdateQuery(Object pojo) throws CustomBankException {
 
 		Class<?> clazz = pojo.getClass();
-		String tableName = clazz.getSimpleName();
-		StringBuilder query = new StringBuilder("UPDATE " + tableName + " SET ");
+		StringBuilder query = new StringBuilder(" SET ");
 		List<Field> fields = getAllFields(clazz);
 		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
 		for (Field field : fields) {
@@ -87,7 +86,7 @@ public class DAOHelper {
 				String fieldName = field.getName();
 				Object fieldValue = field.get(pojo);
 				if (fieldValue != null) {
-					query.append(fieldName).append(" = ?, ");
+					query.append(field.getDeclaringClass().getSimpleName()).append(".").append(fieldName).append(" = ?, ");
 				}
 			} catch (IllegalAccessException e) {
 				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
@@ -132,6 +131,7 @@ public class DAOHelper {
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
 						| SQLException e) {
+					e.printStackTrace();
 					throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 				}
 			}
@@ -151,5 +151,32 @@ public class DAOHelper {
 			}
 		}
 		return getterMethodsMap;
+	}
+
+	public <T> void addWhereConditions(StringBuilder query, T pojo) throws CustomBankException{
+		int noOfParametersToCheck = 0;
+		Class<?> clazz = pojo.getClass();
+		List<Field> fields = getAllFields(clazz);
+		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
+		for (Field field : fields) {
+			field.setAccessible(true);
+			try {
+				String fieldName = field.getName();
+				Object fieldValue = field.get(pojo);
+				String tableName = field.getDeclaringClass().getSimpleName();
+				if (fieldValue != null) {
+					if(noOfParametersToCheck == 0) {
+						query.append(" where ").append(tableName).append(".").append(fieldName).append(" = ?");
+						noOfParametersToCheck++;
+					}
+					else {
+						query.append(" and ").append(tableName).append(".").append(fieldName).append(" = ?");
+						noOfParametersToCheck++;
+					}
+				}
+			} catch (IllegalAccessException e) {
+				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
+			}
+		}
 	}
 }

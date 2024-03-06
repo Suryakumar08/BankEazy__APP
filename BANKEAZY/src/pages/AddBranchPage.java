@@ -3,7 +3,7 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.EmployeeHelper;
+import helpers.BranchHelper;
 import model.Branch;
 import utilities.InputHelper;
 import utilities.Validators;
@@ -11,7 +11,7 @@ import utilities.Validators;
 public class AddBranchPage {
 	private static Logger logger = BankEazyApp.logger;
 	public static void run() throws CustomBankException {
-		EmployeeHelper helper = new EmployeeHelper();
+		BranchHelper helper = new BranchHelper();
 		try {
 			logger.info("Enter Branch Name : ");
 			String branchName = InputHelper.getString();

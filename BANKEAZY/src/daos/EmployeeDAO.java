@@ -12,6 +12,7 @@ import java.util.Map;
 import exception.CustomBankException;
 import jdbc.JDBCConnector;
 import model.Employee;
+import utilities.Validators;
 
 public class EmployeeDAO implements EmployeeDaoInterface {
 	private Connection connection = null;
@@ -24,65 +25,42 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 		connection = JDBCConnector.getConnection();
 	}
 
-	@Override
-	public Employee getEmployee(int userId) throws CustomBankException {
-		StringBuilder query = new StringBuilder(selectEmployeeQuery).append(" where User.id = ?");
-		try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
-			statement.setInt(1, userId);
-
-			Employee employee = null;
-			try (ResultSet result = statement.executeQuery()) {
-				DAOHelper daoHelper = new DAOHelper();
-				Map<String, Method> settersMap = daoHelper.getSettersMap(Employee.class);
-				if (result.next()) {
-					employee = daoHelper.mapResultSetToGivenClassObject(result, Employee.class, settersMap);
-					return employee;
-				} else {
-					throw new CustomBankException(CustomBankException.USER_NOT_EXISTS);
-				}
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e.getCause());
-		}
-	}
-	
-	
-
+	//create
 	@Override
 	public int addEmployee(Employee employee) throws CustomBankException {
+		Validators.checkNull(employee);
 		int newId = -1;
 		try {
 			connection.setAutoCommit(false);
-			try (PreparedStatement statement = connection.prepareStatement(insertUserQuery, Statement.RETURN_GENERATED_KEYS)) {
-
+			try (PreparedStatement statement = connection.prepareStatement(insertUserQuery,
+					Statement.RETURN_GENERATED_KEYS)) {
+				
 				statement.setObject(1, employee.getName());
 				statement.setObject(2, employee.getPassword());
 				statement.setObject(3, employee.getMobile());
 				statement.setObject(4, employee.getGender());
 				statement.setObject(5, employee.getDob());
-				statement.setObject(6, employee.getStatus(1));
-				statement.setObject(7, employee.getType(1));
-
+				statement.setObject(6, employee.getStatus());
+				statement.setObject(7, employee.getType());
+				
 				int result = statement.executeUpdate();
 				if (result == 0) {
 					throw new CustomBankException(CustomBankException.ERROR_OCCURRED);
 				}
-
+				
 				try (ResultSet genKeys = statement.getGeneratedKeys()) {
 					while (genKeys.next()) {
 						newId = genKeys.getInt(1);
 					}
 				}
-
+				
 				try (PreparedStatement statement1 = connection.prepareStatement(insertEmployeeQuery)) {
 					statement1.setObject(1, newId);
 					statement1.setObject(2, employee.getSalary());
 					statement1.setObject(3, employee.getJoiningDate());
 					statement1.setObject(4, employee.getBranchId());
-					statement1.setObject(5, employee.getRole(1));
-
+					statement1.setObject(5, employee.getRole());
+					
 					int noOfRows = statement1.executeUpdate();
 					connection.commit();
 					if (noOfRows == 0) {
@@ -90,7 +68,7 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 					}
 				}
 			}
-
+			
 		} catch (SQLException e) {
 			try {
 				connection.rollback();
@@ -100,29 +78,58 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 		return newId;
-
+		
 	}
+	
+	//read
 
 	@Override
-	public Map<Integer, Employee> getAllEmployees() throws CustomBankException {
-		Map<Integer, Employee> employeeList = new HashMap<>();
-		try (Statement statement = connection.createStatement()) {
-			
-			try (ResultSet result = statement.executeQuery(selectEmployeeQuery)) {
-				DAOHelper daoHelper = new DAOHelper();
+	public Map<Integer, Employee> getEmployees(Employee employee, int limit, long offset) throws CustomBankException {
+		Validators.checkNull(employee);
+		DAOHelper daoHelper = new DAOHelper();
+		Map<Integer, Employee> employeeMap = null;
+		StringBuilder query = new StringBuilder(selectEmployeeQuery);
+		daoHelper.addWhereConditions(query, employee);
+		query.append(" limit ? offset ?");
+		try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
+			int indexToAdd = daoHelper.setFields(statement, employee);
+			statement.setObject(indexToAdd++, limit);
+			statement.setObject(indexToAdd++, offset);
+			try (ResultSet result = statement.executeQuery()) {
 				Map<String, Method> settersMap = daoHelper.getSettersMap(Employee.class);
 				while (result.next()) {
-					Employee employee = daoHelper.mapResultSetToGivenClassObject(result, Employee.class, settersMap);
+					if(employeeMap == null) {
+						employeeMap = new HashMap<>();
+					}
+					Employee currEmployee = daoHelper.mapResultSetToGivenClassObject(result, Employee.class, settersMap);
+					employeeMap.put(currEmployee.getId(), currEmployee);
 
-					employeeList.put(employee.getId(), employee);
-
-				} 
-				return employeeList;
+				}
+				return employeeMap;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e.getCause());
+		}
+	}
+
+	
+	//update
+	@Override
+	public boolean updateEmployee(Employee employee, long employeeId) throws CustomBankException {
+		Validators.checkNull(employee);
+		DAOHelper daoHelper = new DAOHelper();
+		StringBuilder updateQuery = new StringBuilder("Update Employee join User on Employee.userId = User.id");
+		updateQuery.append(daoHelper.generateUpdateQuery(employee));
+		updateQuery.append(" where User.id = ?");
+		try (PreparedStatement statement = connection.prepareStatement(updateQuery.toString())) {
+			int parameterIndexToSet = daoHelper.setFields(statement, employee);
+			statement.setObject(parameterIndexToSet++, employeeId);
+			int noOfRowsAffected = statement.executeUpdate();
+			return noOfRowsAffected > 0;
+		} catch (SQLException e) {
+			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
 

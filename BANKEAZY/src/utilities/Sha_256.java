@@ -14,6 +14,8 @@ public class Sha_256 {
 			byte[] passBytes = digest.digest(password.getBytes());
 			resultString = new BigInteger(1, passBytes).toString();
 			
+//			String resultString = String.format("%064x", new BigInteger(1, passBytes));
+			
 			int length = resultString.length();
 			
 			if(length > 64) {

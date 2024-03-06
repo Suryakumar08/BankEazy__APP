@@ -12,7 +12,22 @@ public class JDBCConnector {
 	private static final String PASSWORD = "Surya@131419@sS";
 	
 	private static Connection connection = null;
-
+	
+	static {
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			System.out.println("Shutdown hook: Closing resource...");
+			try {
+				if(connection != null) {
+					if(!connection.isClosed()) {
+						connection.close();
+					}
+				}
+			} catch (SQLException e) {
+			}
+		}));
+		
+	}
+	
 	private JDBCConnector() {
 		
 	}

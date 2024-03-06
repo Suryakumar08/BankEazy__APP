@@ -3,7 +3,7 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.EmployeeHelper;
+import helpers.CustomerHelper;
 import model.Customer;
 import utilities.InputHelper;
 import utilities.Utilities;
@@ -14,7 +14,7 @@ public class AddCustomerPage {
 
 	public static int run() throws CustomBankException{
 		int returnAns = -1;
-		EmployeeHelper helper = new EmployeeHelper();
+		CustomerHelper helper = new CustomerHelper();
 		while (true) {
 			try {
 				logger.fine("Add a customer : ");

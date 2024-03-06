@@ -1,8 +1,10 @@
 package pages;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,7 +13,6 @@ import jdbc.JDBCConnector;
 import utilities.InputHelper;
 import utilities.ScannerHelper;
 import utilities.customConsoleLogFormatter;
-import utilities.customLogFileFormatter;
 
 public class BankEazyApp {
 
@@ -48,9 +49,13 @@ public class BankEazyApp {
 
 	public static void setLoggerProperties() {
 		try {
-			FileHandler fileHandler = new FileHandler("BankEazyLogs.log", true);
-			fileHandler.setFormatter(new customLogFileFormatter());
-			logger.addHandler(fileHandler);
+			Path logFolderPath = Paths.get("logFiles");
+            if (!Files.exists(logFolderPath)) {
+                Files.createDirectories(logFolderPath);
+            }
+//			FileHandler fileHandler = new FileHandler("logFiles/BankEazyLogs.log", true);
+//			fileHandler.setFormatter(new customLogFileFormatter());
+//			logger.addHandler(fileHandler);
 			ConsoleHandler consoleHandler = new ConsoleHandler();
 			consoleHandler.setFormatter(new customConsoleLogFormatter());
 			consoleHandler.setLevel(Level.ALL);
@@ -59,6 +64,7 @@ public class BankEazyApp {
 			logger.setLevel(Level.ALL);
 
 		} catch (SecurityException | IOException e) {
+			e.printStackTrace();
 			System.out.println("Some error occurred : " + e.getMessage() + "\nCause : " + e.getCause());
 		}
 	}

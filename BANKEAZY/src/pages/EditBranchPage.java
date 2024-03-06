@@ -3,14 +3,14 @@ package pages;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import helpers.EmployeeHelper;
+import helpers.BranchHelper;
 import model.Branch;
 import utilities.InputHelper;
 
 public class EditBranchPage {
 	private static Logger logger = BankEazyApp.logger;
 	public static void run() throws CustomBankException{
-		EmployeeHelper helper = new EmployeeHelper();
+		BranchHelper helper = new BranchHelper();
 		try {
 			logger.info("Enter branchId to edit : ");
 			int branchId = InputHelper.getInt();

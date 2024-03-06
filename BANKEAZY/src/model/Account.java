@@ -6,31 +6,31 @@ public class Account {
 	private Double balance;
 	private Integer branchId = -1;
 	private Integer status = -1;		//1 -> Active 0 -> InActive
-	public long getAccountNo() {
+	public Long getAccountNo() {
 		return accountNo;
 	}
 	public void setAccountNo(long accountNo) {
 		this.accountNo = accountNo;
 	}
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	public double getBalance() {
+	public Double getBalance() {
 		return balance;
 	}
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	public int getBranchId() {
+	public Integer getBranchId() {
 		return branchId;
 	}
 	public void setBranchId(int branchId) {
 		this.branchId = branchId;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 	public void setStatus(int status) {

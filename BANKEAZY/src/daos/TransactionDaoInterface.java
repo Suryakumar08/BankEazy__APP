@@ -1,16 +1,20 @@
 package daos;
 
-import java.util.List;
+import java.util.Map;
 
 import exception.CustomBankException;
 import model.Transaction;
 
 public interface TransactionDaoInterface {
-	public boolean addTransaction(Transaction transaction) throws CustomBankException;
 	
-	public long getLastTransactionId() throws CustomBankException;
+	//create
+	long addTransaction(Transaction transaction) throws CustomBankException;
 	
-	public List<Transaction> getTransactions(long accountNo, long from, long to) throws CustomBankException;
+	//read
+	long getLastTransactionId() throws CustomBankException;
+	
+	Map<Long, Transaction> getTransactions(Transaction transaction, long from, long to, int limit, long offset) throws CustomBankException;
 
-	public List<Transaction> getTransactions(long from, long to) throws CustomBankException;
+	
+	
 }

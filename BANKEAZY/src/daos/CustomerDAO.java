@@ -12,6 +12,7 @@ import java.util.Map;
 import exception.CustomBankException;
 import jdbc.JDBCConnector;
 import model.Customer;
+import utilities.Validators;
 
 public class CustomerDAO implements CustomerDaoInterface{
 	
@@ -19,12 +20,14 @@ public class CustomerDAO implements CustomerDaoInterface{
 	
 	private String insertUserQuery = "insert into User(name, password, mobile, gender, dob, status, type) values(?, ?, ?, ?, ?, ?, ?)";
 	private String insertCustomerQuery = "insert into Customer values(?, ?, ?)";
-	private String getCustomerQuery = "select User.id as userId, name, password, mobile, gender, dob, status, type, pan, aadhar from User join Customer on User.id = Customer.userId";
+	private String getCustomerQuery = "select id, name, password, mobile, gender, dob, status, type, pan, aadhar from User join Customer on User.id = Customer.userId";
 	
 	public CustomerDAO() throws CustomBankException{
 		connection = JDBCConnector.getConnection();
 	}
 	
+	//create
+	@Override
 	public int addCustomer(Customer customer) throws CustomBankException{
 		int newId = -1;
 		try {
@@ -36,8 +39,8 @@ public class CustomerDAO implements CustomerDaoInterface{
 				statement.setObject(3, customer.getMobile());
 				statement.setObject(4, customer.getGender());
 				statement.setObject(5, customer.getDob());
-				statement.setObject(6, customer.getStatus(1));
-				statement.setObject(7, customer.getType(1));
+				statement.setObject(6, customer.getStatus());
+				statement.setObject(7, customer.getType());
 
 				int result = statement.executeUpdate();
 				if (result == 0) {
@@ -76,38 +79,49 @@ public class CustomerDAO implements CustomerDaoInterface{
 	}
 	
 	
-	public Customer getCustomer(int customerId) throws CustomBankException {
-		Customer customer = null;
-		StringBuilder query = new StringBuilder(getCustomerQuery).append(" where User.id = ?");
+	//read
+	@Override
+	public Map<Integer, Customer> getCustomers(Customer customer, int limit, long offset) throws CustomBankException{
+		Validators.checkNull(customer);
+		DAOHelper daoHelper = new DAOHelper();
+		Map<Integer, Customer> customerMap = null;
+		StringBuilder query = new StringBuilder(getCustomerQuery);
+		daoHelper.addWhereConditions(query, customer);
+		query.append(" limit ? offset ?");
 		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
-			statement.setInt(1, customerId);
-			try(ResultSet customerSet = statement.executeQuery()){
-				DAOHelper daoHelper = new DAOHelper();
+			int indexToAdd = daoHelper.setFields(statement, customer);
+			statement.setObject(indexToAdd++, limit);
+			statement.setObject(indexToAdd++, offset);
+			try(ResultSet records = statement.executeQuery()){
 				Map<String, Method> settersMap = daoHelper.getSettersMap(Customer.class);
-				if(customerSet.next()) {
-					customer = daoHelper.mapResultSetToGivenClassObject(customerSet, Customer.class, settersMap);
+				while(records.next()) {
+					if(customerMap == null) {
+						customerMap = new HashMap<>();
+					}
+					Customer currCustomer = daoHelper.mapResultSetToGivenClassObject(records, Customer.class, settersMap);
+					customerMap.put(currCustomer.getId(), currCustomer);
 				}
-				return customer;
+				return customerMap;
 			}
 		} catch (SQLException e) {
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
+
 	
-	
-	public Map<Integer, Customer> getCustomers() throws CustomBankException{
-		Map<Integer, Customer> customerMap = null;
-		try(Statement statement = connection.createStatement()){
-			try(ResultSet records = statement.executeQuery(getCustomerQuery)){
-				customerMap = new HashMap<>();
-				DAOHelper daoHelper = new DAOHelper();
-				Map<String, Method> settersMap = daoHelper.getSettersMap(Customer.class);
-				while(records.next()) {
-					Customer customer = daoHelper.mapResultSetToGivenClassObject(records, Customer.class, settersMap);
-					customerMap.put(customer.getUserId(), customer);
-				}
-				return customerMap;
-			}
+	//update
+	@Override
+	public boolean updateCustomer(Customer customer, int customerId) throws CustomBankException {
+		DAOHelper daoHelper = new DAOHelper();
+		
+		StringBuilder updateQuery = new StringBuilder("Update Customer join User on Customer.userId = User.id");
+		updateQuery.append(daoHelper.generateUpdateQuery(customer));
+		updateQuery.append(" where User.id = ?");
+		try(PreparedStatement statement = connection.prepareStatement(updateQuery.toString())){
+			int parameterIndexToSet = daoHelper.setFields(statement, customer);
+			statement.setObject(parameterIndexToSet++, customerId);
+			int noOfRowsAffected = statement.executeUpdate();
+			return noOfRowsAffected > 0;
 		} catch (SQLException e) {
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
