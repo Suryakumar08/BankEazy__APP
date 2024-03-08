@@ -1,5 +1,7 @@
 package model;
 
+import enums.TransactionStatus;
+import enums.TransactionType;
 import utilities.Utilities;
 
 public class Transaction {
@@ -54,36 +56,11 @@ public class Transaction {
 	public Integer getType() {
 		return type;
 	}
-	public void setTypeFromString(String type) {
-		if(type.equalsIgnoreCase("deposit")) {
-			this.type = 1;
-		}
-		else if(type.equalsIgnoreCase("withdraw")) {
-			this.type = 2;
-		}
-		else if(type.equalsIgnoreCase("debit")) {
-			this.type = 3;
-		}
-		else if(type.equalsIgnoreCase("credit")) {
-			this.type = 4;
-		}
+	public void setTypeFromEnum(TransactionType type) {
+		this.type = type.getType();
 	}
 	public String getTypeAsString() {
-		if(type == 1) {
-			return "Deposit";
-		}
-		if(type == 2) {
-			return "Withdraw";
-		}
-		if(type == 3) {
-			return "Debit";
-		}
-		if(type == 4) {
-			return "Credit";
-		}
-		else {
-			return "";
-		}
+		return TransactionType.getTransactionType(this.type).toString();
 	}
 	public void setType(int type) {
 		this.type = type;
@@ -91,8 +68,14 @@ public class Transaction {
 	public Integer getStatus() {
 		return status;
 	}
+	public String getStatusAsString() {
+		return TransactionStatus.getTransactionStatus(status).toString();
+	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public void setStatusFromEnum(TransactionStatus status) {
+		this.status = status.getStatus();
 	}
 	public Long getTime() {
 		return time;
@@ -104,7 +87,7 @@ public class Transaction {
 		return closingBalance;
 	}
 	public void setClosingBalance(double closingBalance) {
-		this.closingBalance = closingBalance;
+		this.closingBalance = ((double)Math.round(closingBalance * 100.0)) / 100.0;
 	}
 	public Long getReferenceNo() {
 		return referenceNo;
@@ -116,7 +99,7 @@ public class Transaction {
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", customerId=" + customerId
 				+ ", accountNo=" + accountNo + ", transactionAccountNo=" + transactionAccountNo + ", description="
-				+ description + ", type=" + getTypeAsString() + ", status=" + (status == 1 ? "Success" : "Failed") + ", time=" + Utilities.getDateTimeString(time) + ", closingBalance="
+				+ description + ", type=" + getTypeAsString() + ", status=" + getStatusAsString() + ", time=" + Utilities.getDateTimeString(time) + ", closingBalance="
 				+ closingBalance + ", amount=" + amount + " referenceNo=" + referenceNo + "]";
 	}
 }

@@ -12,7 +12,9 @@ public interface EmployeeDaoInterface {
 	
 	//read
 	Map<Integer, Employee> getEmployees(Employee employee,int limit, long offset) throws CustomBankException;
-
+	
+	Map<Integer, Employee> getEmployeesJoinedBetween(long from, long to, int limit, long offset) throws CustomBankException;
+	
 	//update
 	boolean updateEmployee(Employee employee, long employeeId) throws CustomBankException;
 

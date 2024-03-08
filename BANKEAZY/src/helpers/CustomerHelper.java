@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import daos.CustomerDaoInterface;
+import enums.UserType;
 import exception.CustomBankException;
 import model.Customer;
 import utilities.Sha_256;
@@ -35,7 +36,7 @@ public class CustomerHelper {
 		String password = customer.getPassword();
 		customer.setPassword(Sha_256.getHashedPassword(password));
 		customer.setStatus(1);
-		customer.setTypeFromString("customer");
+		customer.setTypeFromEnum(UserType.Customer);
 		return customerDao.addCustomer(customer);
 	}
 	

@@ -2,6 +2,7 @@ package pages;
 
 import java.util.logging.Logger;
 
+import enums.TransactionType;
 import exception.CustomBankException;
 import helpers.TransactionHelper;
 import helpers.UserHelper;
@@ -41,9 +42,7 @@ public class TransferAmountPage {
 					logger.info("Enter password : ");
 					String password = InputHelper.getString();
 					
-					if(!userHelper.checkPassword(password, userHelper.getUser(customerId))) {
-						throw new CustomBankException(CustomBankException.INVALID_PASSWORD);
-					}
+					userHelper.checkPassword(password, userHelper.getUser(customerId));
 
 					Transaction currTransaction = new Transaction();
 					currTransaction.setAccountNo(accountNo);
@@ -51,9 +50,9 @@ public class TransferAmountPage {
 					currTransaction.setTransactionAccountNo(recipientAccNo);
 					currTransaction.setDescription(description);
 					currTransaction.setAmount(amount);
-					currTransaction.setTypeFromString("Debit");
+					currTransaction.setTypeFromEnum(TransactionType.DEBIT);
 
-					long referenceNo = transactionHelper.makeIntraBankTransaction(currTransaction);
+					long referenceNo = transactionHelper.makeBankTransaction(currTransaction, false);
 
 					if (referenceNo != -1) {
 						logger.fine("Transaction Success!!!");
@@ -84,9 +83,7 @@ public class TransferAmountPage {
 					logger.info("Enter password : ");
 					String password = InputHelper.getString();
 					
-					if(!userHelper.checkPassword(password, userHelper.getUser(customerId))) {
-						throw new CustomBankException(CustomBankException.INVALID_PASSWORD);
-					}
+					userHelper.checkPassword(password, userHelper.getUser(customerId));
 					
 					Transaction currTransaction = new Transaction();
 					currTransaction.setAccountNo(accountNo);
@@ -94,9 +91,9 @@ public class TransferAmountPage {
 					currTransaction.setTransactionAccountNo(recipientAccountNo);
 					currTransaction.setDescription(description);
 					currTransaction.setAmount(amount);
-					currTransaction.setTypeFromString("Debit");
+					currTransaction.setTypeFromEnum(TransactionType.DEBIT);
 
-					long referenceNo = transactionHelper.makeInterBankTransaction(currTransaction);
+					long referenceNo = transactionHelper.makeBankTransaction(currTransaction, true);
 
 					if (referenceNo != -1) {
 						logger.info("Transaction Success!!!");

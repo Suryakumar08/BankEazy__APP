@@ -15,51 +15,41 @@ import model.Account;
 import utilities.Validators;
 
 public class AccountDAO implements AccountDaoInterface {
-	
-	
-	private Connection connection = null;
-	private String addAccountQuery = 
-			"Insert into Account(customerId, balance, branchId, status) values(?, ?, ?, ?)";
-	private String selectAccountsQuery = 
-			"Select accountNo, customerId, balance, branchId, status from Account";
+	private String dbName = "BankEazy";
 
-	public AccountDAO() throws CustomBankException {
-		connection = JDBCConnector.getConnection();
-	}
+	private String addAccountQuery = "Insert into Account(customerId, balance, branchId, status) values(?, ?, ?, ?)";
+	private String selectAccountsQuery = "Select accountNo, customerId, balance, branchId, status from Account";
 
-	
-	//create
+	// create
 	@Override
 	public long addAccount(Account account) throws CustomBankException {
 		Validators.checkNull(account);
 		long accNo = -1l;
-		try (PreparedStatement statement = connection.prepareStatement(addAccountQuery.toString(),
-				Statement.RETURN_GENERATED_KEYS)) {
-			statement.setObject(1, account.getCustomerId());
-			statement.setObject(2, account.getBalance());
-			statement.setObject(3, account.getBranchId());
-			statement.setObject(4, account.getStatus());
-			int noOfRowsAffected = statement.executeUpdate();
-			if (noOfRowsAffected == 0) {
-				System.out.println("noOfRowsAff is zero");
-				throw new CustomBankException(CustomBankException.ERROR_OCCURRED);
-			}
+		try (Connection connection = JDBCConnector.getConnection(dbName)) {
+			try (PreparedStatement statement = connection.prepareStatement(addAccountQuery.toString(),
+					Statement.RETURN_GENERATED_KEYS)) {
+				statement.setObject(1, account.getCustomerId());
+				statement.setObject(2, account.getBalance());
+				statement.setObject(3, account.getBranchId());
+				statement.setObject(4, account.getStatus());
+				int noOfRowsAffected = statement.executeUpdate();
+				if (noOfRowsAffected == 0) {
+					throw new CustomBankException(CustomBankException.ERROR_OCCURRED);
+				}
 
-			try (ResultSet genKeys = statement.getGeneratedKeys()) {
-				if (genKeys.next()) {
-					accNo = genKeys.getLong(1);
+				try (ResultSet genKeys = statement.getGeneratedKeys()) {
+					if (genKeys.next()) {
+						accNo = genKeys.getLong(1);
+					}
 				}
 			}
-
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 		return accNo;
 	}
 
-	
-	//read
+	// read
 	@Override
 	public Map<Long, Account> getAccounts(Account account, int limit, long offset) throws CustomBankException {
 		Validators.checkNull(account);
@@ -68,28 +58,31 @@ public class AccountDAO implements AccountDaoInterface {
 		StringBuilder query = new StringBuilder(selectAccountsQuery);
 		daoHelper.addWhereConditions(query, account);
 		query.append(" limit ? offset ?");
-		try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
-			int indexToAdd = daoHelper.setFields(statement, account);
-			statement.setObject(indexToAdd++, limit);
-			statement.setObject(indexToAdd++, offset);
-			try (ResultSet accounts = statement.executeQuery()) {
-				Map<String, Method> settersMap = daoHelper.getSettersMap(Account.class);
-				while (accounts.next()) {
-					if(accountMap == null) {
-						accountMap = new HashMap<>();
+		try (Connection connection = JDBCConnector.getConnection(dbName)) {
+			try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
+				int indexToAdd = daoHelper.setFields(statement, account);
+				statement.setObject(indexToAdd++, limit);
+				statement.setObject(indexToAdd++, offset);
+				try (ResultSet accounts = statement.executeQuery()) {
+					Map<String, Method> settersMap = daoHelper.getSettersMap(Account.class);
+					while (accounts.next()) {
+						if (accountMap == null) {
+							accountMap = new HashMap<>();
+						}
+						Account currAccount = daoHelper.mapResultSetToGivenClassObject(accounts, Account.class,
+								settersMap);
+						accountMap.put(currAccount.getAccountNo(), currAccount);
 					}
-					Account currAccount  = daoHelper.mapResultSetToGivenClassObject(accounts, Account.class, settersMap);
-					accountMap.put(currAccount.getAccountNo(), currAccount);
 				}
+				return accountMap;
 			}
-			return accountMap;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
 
-		
-	//update
+	// update
 	@Override
 	public boolean updateAccount(Account account) throws CustomBankException {
 		Validators.checkNull(account);
@@ -97,21 +90,21 @@ public class AccountDAO implements AccountDaoInterface {
 		StringBuilder query = new StringBuilder("update Account");
 		query.append(helper.generateUpdateQuery(account));
 		query.append(" where accountNo = ?");
-		try(PreparedStatement statement = connection.prepareStatement(query.toString())){
-			int index = helper.setFields(statement, account);
-			statement.setLong(index++, account.getAccountNo());
-			
-			int noOfRowsAffected = statement.executeUpdate();
-			
-			if(noOfRowsAffected == 0) {
-				return false;
+		try (Connection connection = JDBCConnector.getConnection(dbName)) {
+			try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
+				int index = helper.setFields(statement, account);
+				statement.setLong(index++, account.getAccountNo());
+
+				int noOfRowsAffected = statement.executeUpdate();
+
+				if (noOfRowsAffected == 0) {
+					return false;
+				}
+				return true;
 			}
-			return true;
 		} catch (SQLException e) {
 			throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 		}
 	}
-
-
 
 }

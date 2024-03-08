@@ -8,7 +8,7 @@ import model.Transaction;
 public interface TransactionDaoInterface {
 	
 	//create
-	long addTransaction(Transaction transaction) throws CustomBankException;
+	long addTransactions(Transaction ...transactions) throws CustomBankException;
 	
 	//read
 	long getLastTransactionId() throws CustomBankException;

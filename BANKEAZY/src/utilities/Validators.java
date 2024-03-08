@@ -31,5 +31,18 @@ public class Validators {
 			throw new CustomBankException(CustomBankException.INVALID_MOBILE);
 		}
 	}
+
+	public static void checkNull(Object object, String message) throws CustomBankException{
+		if(object == null) {
+			throw new CustomBankException(CustomBankException.NULL_MESSAGE + " " + message);
+		}
+	}
+
+	public static void checkRangeBound(double value, double min, double max, String message) throws CustomBankException{
+		if(value < min || value > max) {
+			throw new CustomBankException(CustomBankException.ERROR_OCCURRED + " " + message);
+		}
+		
+	}
 	
 }

@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import daos.EmployeeDaoInterface;
+import enums.UserType;
 import exception.CustomBankException;
 import model.Employee;
 import utilities.Sha_256;
@@ -35,7 +36,7 @@ public class EmployeeHelper {
 		String password = employee.getPassword();
 		employee.setPassword(Sha_256.getHashedPassword(password));
 		employee.setStatus(1);
-		employee.setTypeFromString("employee");
+		employee.setTypeFromEnum(UserType.Employee);
 		return employeeDao.addEmployee(employee);
 	}
 	

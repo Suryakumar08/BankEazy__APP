@@ -1,5 +1,6 @@
 package model;
 
+import enums.EmployeeRole;
 import utilities.Utilities;
 
 public class Employee extends User {
@@ -37,19 +38,13 @@ public class Employee extends User {
 		return role;
 	}
 	public String getRoleAsString() {
-		if(role == 1) {
-			return "Admin";
-		}
-		return "Employee";
+		return EmployeeRole.getEmployeeRole(this.role).toString();
 	}
 	public void setRole(int role) {
 		this.role = role;
 	}
-	public void setRoleFromString(String role) {
-		if(role.equalsIgnoreCase("admin")) {
-			this.role = 1;
-		}
-		else this.role = 2;
+	public void setRoleFromEnum(EmployeeRole role) {
+		this.role = role.getRole();
 	}
 	@Override
 	public String toString() {

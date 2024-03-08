@@ -1,11 +1,13 @@
 package model;
 
+import enums.AccountStatus;
+
 public class Account {
 	private Long accountNo;
 	private Integer customerId;
 	private Double balance;
-	private Integer branchId = -1;
-	private Integer status = -1;		//1 -> Active 0 -> InActive
+	private Integer branchId;
+	private Integer status;		//1 -> Active 0 -> InActive
 	public Long getAccountNo() {
 		return accountNo;
 	}
@@ -22,7 +24,7 @@ public class Account {
 		return balance;
 	}
 	public void setBalance(double balance) {
-		this.balance = balance;
+		this.balance = ((double)Math.round(balance * 100.0) / 100.0);
 	}
 	public Integer getBranchId() {
 		return branchId;
@@ -33,13 +35,16 @@ public class Account {
 	public Integer getStatus() {
 		return status;
 	}
+	public String getStatusAsString() {
+		return AccountStatus.getAccountStatus(status).toString();
+	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
 	@Override
 	public String toString() {
 		return "Account [accountNo=" + accountNo + ", customerId=" + customerId + ", balance=" + balance + ", branchId="
-				+ branchId + ", status=" + (status == 0 ? "Inactive" : "Active") + "]";
+				+ branchId + ", status=" + getStatusAsString() + "]";
 	}
 	
 	

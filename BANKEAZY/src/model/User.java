@@ -1,5 +1,7 @@
 package model;
 
+import enums.UserStatus;
+import enums.UserType;
 import utilities.Utilities;
 
 public class User {
@@ -53,53 +55,31 @@ public class User {
 		return this.type;
 	}
 	public String getTypeAsString() {
-		if(this.type == 1) {
-			return "Employee";
-		}
-		return "Customer";
+		return UserType.getUserType(this.type).toString();
 	}
 	public void setType(int type) {
 		this.type = type;
 	}
-	public void setTypeFromString(String type) {
-		if(type.equalsIgnoreCase("employee")) {
-			this.type = 1;
-		}
-		else this.type = 0;
+	public void setTypeFromEnum(UserType type) {
+		this.type = type.getType();
 	}
 	public Integer getStatus() {
 		return this.status;
 	}
 	public String getStatusAsString() {
-		if(this.status == 0) {
-			return "Inactive";
-		}
-		return "Active";
+		return UserStatus.getUserStatus(this.status).toString();
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public void setStatusFromString(String status) {
-		if(status.equalsIgnoreCase("active")) {
-			this.status = 1;
-		}
-		else {
-			this.status = 0;
-		}
+	public void setStatusFromEnum(UserStatus status) {
+		this.status = status.getStatus();
 	}
 	
 	@Override
 	public String toString() {
-		String userType = "Customer";
-		if(type == 1) {
-			userType = "Employee";
-		}
-		String userStatus = "Inactive";
-		if(status == 1) {
-			userStatus = "Active";
-		}
 		return "User [userId=" + id + "\nname=" + name + "\nmobile=" + mobile + "\ndob="
-				+ Utilities.getDateString(dob) + "\ntype=" + userType +"\nstatus=" + userStatus + "]\n";
+				+ Utilities.getDateString(dob) + "\ntype=" + getTypeAsString() +"\nstatus=" + getStatusAsString() + "]\n";
 	}
 	
 	

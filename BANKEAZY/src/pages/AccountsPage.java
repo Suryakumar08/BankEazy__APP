@@ -15,56 +15,69 @@ public class AccountsPage {
 	public static void run(int userId) throws CustomBankException {
 		AccountHelper helper = new AccountHelper();
 		boolean continueProgram = true;
-		Map<Long, Account> accounts = helper.getAccounts(userId);
 		while (continueProgram) {
 			try {
-				logger.info("Select Account  by entering account number: ");
-				printAccounts(accounts);
-				long selectedAccount = InputHelper.getLong();
+				Map<Long, Account> accounts = helper.getAccounts(userId);
+				Account selectedAccount = null;
+				long selectedAccountNo = -1;
+				if(accounts.size() == 1) {
+					selectedAccountNo = accounts.keySet().iterator().next();
+					selectedAccount = accounts.get(selectedAccountNo);
+				}
+				else {
+					logger.info("Select Account  by entering account number: ");
+					printAccounts(accounts);
+					selectedAccountNo = InputHelper.getLong();
+					selectedAccount = accounts.get(selectedAccountNo);
+				}
 
-				Account account = accounts.get(selectedAccount);
-
-				if (account == null) {
+				if (selectedAccount == null) {
 					logger.warning("Select Existing Account !!!");
-				} else if (account.getStatus() == 0) {
+				} else if (selectedAccount.getStatus() == 0) {
 					logger.warning("Selected account is InActive at the moment!");
 				} else {
-					long currAccountNo = account.getAccountNo();
+					boolean continueInSelectedAccount = true;
+					while(continueInSelectedAccount) {
 					logger.info(
-							"1) Deposit Amount\n2) Withdraw Amount\n3) Transfer Amount\n4) View Transaction History\n5) View Account Details\n6) Exit");
+							"1) Deposit Amount\n2) Withdraw Amount\n3) Transfer Amount\n4) View Transaction History\n5) View Account Details\n6) Select Another Account\n7) Exit");
 					logger.info("Enter your choice : ");
 					int customerChoice = InputHelper.getInt();
 					switch (customerChoice) {
 					case 1: {
-						DepositAmountPage.run(currAccountNo, userId);
+						DepositAmountPage.run(selectedAccountNo, userId);
 						break;
 					}
 					case 2: {
-						WithdrawAmountPage.run(currAccountNo, userId);
+						WithdrawAmountPage.run(selectedAccountNo, userId);
 						break;
 					}
 					case 3: {
-						TransferAmountPage.run(currAccountNo, userId);
+						TransferAmountPage.run(selectedAccountNo, userId);
 						break;
 					}
 					case 4: {
-						ViewCustomerTransactionPage.run(currAccountNo);
+						ViewCustomerTransactionPage.run(selectedAccountNo);
 						break;
 					}
 					case 5: {
-						logger.fine(account.toString());
+						logger.fine(selectedAccount.toString());
 						break;
 					}
 					case 6: {
-						logger.fine("Thank you!");
-						continueProgram = false;
+						continueInSelectedAccount = false;
 						break;
+					}
+					case 7:{
+						logger.fine("Thank you!");
+						continueInSelectedAccount = false;
+						continueProgram = false;
 					}
 					default: {
 						logger.severe("Give valid choice!");
 						break;
 					}
 					}
+				}
 				}
 			} catch (CustomBankException e) {
 				logger.warning(e.getMessage());

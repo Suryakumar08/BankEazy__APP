@@ -13,54 +13,18 @@ public class JDBCConnector {
 	
 	private static Connection connection = null;
 	
-	static {
-		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-			System.out.println("Shutdown hook: Closing resource...");
-			try {
-				if(connection != null) {
-					if(!connection.isClosed()) {
-						connection.close();
-					}
-				}
-			} catch (SQLException e) {
-			}
-		}));
-		
-	}
-	
 	private JDBCConnector() {
 		
 	}
 
-
-	private static void establishConnection(String dbName) throws CustomBankException{
-		if(connection == null) {
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				connection = DriverManager.getConnection(URL + dbName, USERNAME, PASSWORD);
-			} catch (ClassNotFoundException e) {
-				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e.getCause());
-			} catch (SQLException e) {
-				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e.getCause());
-			}			
-		}
-	}
-
-	public static Connection getConnection() throws CustomBankException{
-		if (connection == null) {
-			establishConnection("BankEazy");
+	public static Connection getConnection(String dbName) throws CustomBankException{
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection(URL + dbName, USERNAME, PASSWORD);
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new CustomBankException("Connection failed!", e);
 		}
 		return connection;
-	}
-	
-	public static void closeConnection() {
-		try {
-			if(connection != null) {
-				connection.close();
-			}
-		} catch (SQLException e) {
-			
-		}
 	}
 
 }

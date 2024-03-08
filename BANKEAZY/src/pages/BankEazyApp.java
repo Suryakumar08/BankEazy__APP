@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import exception.CustomBankException;
-import jdbc.JDBCConnector;
 import utilities.InputHelper;
 import utilities.ScannerHelper;
 import utilities.customConsoleLogFormatter;
@@ -34,7 +33,6 @@ public class BankEazyApp {
 					break;
 				}
 				default: {
-					JDBCConnector.closeConnection();
 					ScannerHelper.closeScanner();
 					logger.fine("Thanks you! Come again!!");
 					continueProgram = false;
