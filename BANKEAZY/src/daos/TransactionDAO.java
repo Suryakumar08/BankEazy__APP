@@ -124,8 +124,8 @@ public class TransactionDAO implements TransactionDaoInterface {
 		try (Connection connection = JDBCConnector.getConnection(dbName)) {
 			try (PreparedStatement statement = connection.prepareStatement(query.toString())) {
 				int parameterIndexToAdd = daoHelper.setFields(statement, transaction);
-				statement.setLong(parameterIndexToAdd++, from);
-				statement.setLong(parameterIndexToAdd++, to);
+				statement.setObject(parameterIndexToAdd++, from);
+				statement.setObject(parameterIndexToAdd++, to);
 				statement.setObject(parameterIndexToAdd++, limit);
 				statement.setObject(parameterIndexToAdd++, offset);
 				Map<Long, Transaction> transactionsMap = null;
@@ -135,8 +135,7 @@ public class TransactionDAO implements TransactionDaoInterface {
 						if (transactionsMap == null) {
 							transactionsMap = new HashMap<>();
 						}
-						Transaction currTransaction = daoHelper.mapResultSetToGivenClassObject(transactions,
-								Transaction.class, settersMap);
+						Transaction currTransaction = daoHelper.mapResultSetToGivenClassObject(transactions,Transaction.class, settersMap);
 						transactionsMap.put(currTransaction.getReferenceNo(), currTransaction);
 					}
 					return transactionsMap;

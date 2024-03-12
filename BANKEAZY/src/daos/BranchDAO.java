@@ -89,7 +89,7 @@ public class BranchDAO implements BranchDaoInterface {
 		Validators.checkNull(branch);
 		DAOHelper helper = new DAOHelper();
 		StringBuilder updateBranchQuery = new StringBuilder("update Branch ");
-		updateBranchQuery.append(helper.generateUpdateQuery(updateBranchQuery));
+		updateBranchQuery.append(helper.generateUpdateQuery(branch));
 		updateBranchQuery.append(" where id = ?");
 		try (Connection connection = JDBCConnector.getConnection(dbName)) {
 			try (PreparedStatement statement = connection.prepareStatement(updateBranchQuery.toString())) {

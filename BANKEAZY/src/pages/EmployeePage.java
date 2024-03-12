@@ -92,7 +92,7 @@ public class EmployeePage {
 					logger.info("Enter Customer Id : ");
 					int customerId = InputHelper.getInt();
 					Customer customer = customerHelper.getCustomer(customerId);
-					logger.fine(customer.toString());
+					logger.fine(customer != null ? customer.toString() : "No Customer Exists");
 					break;
 				}
 				case 9: {
@@ -101,7 +101,7 @@ public class EmployeePage {
 					long currOffset = 0;
 					boolean continuePrintTransaction = true;
 					do{
-						Map<Long, Transaction> transactions = transactionHelper.getCustomerTransactions(customerId, (Utilities.getCurrentTime() - (long)(30 * 3600000 * 24)), Utilities.getCurrentTime(), 50, currOffset);
+						Map<Long, Transaction> transactions = transactionHelper.getCustomerTransactions(customerId, (Utilities.getCurrentTime() - (30l * 3600000l * 24)), Utilities.getCurrentTime(), 50, currOffset);
 						if(transactions.size() == 0) {
 							logger.warning("No more Transactions!!!");
 							continuePrintTransaction = false;

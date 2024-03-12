@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,35 +14,39 @@ import java.util.List;
 import java.util.Map;
 
 import exception.CustomBankException;
+import utilities.Validators;
+import yamlConvertor.YamlMapper;
 
 public class DAOHelper {
+
+	private static Map<String, Map<String, String>> mappingMap = null;
+
+	public DAOHelper() throws CustomBankException {
+		if (mappingMap == null) {
+			mappingMap = new YamlMapper().mapToObject("Mapping.yaml");
+		}
+	}
+
 	public <T> T mapResultSetToGivenClassObject(ResultSet resultSet, Class<T> clazz, Map<String, Method> settersMap)
 			throws CustomBankException {
 		try {
 			T givenClassInstance = clazz.getDeclaredConstructor().newInstance();
 
-			for (String columnName : settersMap.keySet()) {
-				if (columnExists(resultSet, columnName)) {
-					Method setterMethod = settersMap.get(columnName);
-					Class<?> parameterType = setterMethod.getParameterTypes()[0];
-
-					if (parameterType == int.class || parameterType == Integer.class) {
-						setterMethod.invoke(givenClassInstance, resultSet.getInt(columnName));
-					} else if (parameterType == long.class || parameterType == Long.class) {
-						setterMethod.invoke(givenClassInstance, resultSet.getLong(columnName));
-					} else if (parameterType == double.class || parameterType == Double.class) {
-						setterMethod.invoke(givenClassInstance, resultSet.getDouble(columnName));
-					} else if (parameterType == String.class) {
-						setterMethod.invoke(givenClassInstance, resultSet.getString(columnName));
-					} else {
-						throw new CustomBankException("Unsupported data type: " + parameterType.getSimpleName());
-					}
-				}
+			ResultSetMetaData metaData = resultSet.getMetaData();
+			int columnCount = metaData.getColumnCount();
+			for (int i = 1; i <= columnCount; i++) {
+				String tableName = metaData.getTableName(i);
+				String className = mappingMap.get("Table to Pojo").get(tableName);
+				Validators.checkNull(className, "Mapping error!");
+				String columnName = metaData.getColumnName(i);
+				Object columnValue = resultSet.getObject(i);
+				String fieldName = mappingMap.get(tableName + " Column to " + className + " Field").get(columnName);
+				Validators.checkNull(fieldName, "Mapping Error!");
+				Validators.checkNull(settersMap.get(fieldName), "settermap fieldName get null");
+				settersMap.get(fieldName).invoke(givenClassInstance, columnValue);
 			}
-
 			return givenClassInstance;
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new CustomBankException("Error mapping ResultSet to " + clazz.getSimpleName(), e);
 		}
 	}
@@ -50,45 +55,42 @@ public class DAOHelper {
 		Map<String, Method> settersMap = new HashMap<>();
 		for (Method method : clazz.getMethods()) {
 			if (isSetter(method)) {
-				String fieldName = getFieldNameFromSetter(method.getName());
+				String fieldName = getFieldNameFromGetterOrSetter(method.getName());
 				settersMap.put(fieldName, method);
 			}
 		}
 		return settersMap;
 	}
 
-	private boolean isSetter(Method method) {
-		return method.getName().startsWith("set") && method.getParameterCount() == 1;
-	}
-
-	private String getFieldNameFromSetter(String setterName) {
-		return Character.toLowerCase(setterName.charAt(3)) + setterName.substring(4);
-	}
-
-	private boolean columnExists(ResultSet resultSet, String columnName) {
-		try {
-			resultSet.findColumn(columnName);
-			return true;
-		} catch (SQLException e) {
-			return false;
-		}
-	}
-
 	public String generateUpdateQuery(Object pojo) throws CustomBankException {
 
 		Class<?> clazz = pojo.getClass();
-		StringBuilder query = new StringBuilder(" SET ");
+		StringBuilder query = new StringBuilder();
 		List<Field> fields = getAllFields(clazz);
 		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
+		Map<String, Method> gettersMap = getGettersMap(pojo);
+		int noOfSetAdded = 0;
 		for (Field field : fields) {
-			field.setAccessible(true);
 			try {
+				String className = field.getDeclaringClass().getSimpleName();
 				String fieldName = field.getName();
-				Object fieldValue = field.get(pojo);
-				if (fieldValue != null) {
-					query.append(field.getDeclaringClass().getSimpleName()).append(".").append(fieldName).append(" = ?, ");
+				Method getterMethod = gettersMap.get(fieldName);
+				if (getterMethod != null) {
+					Object fieldValue = getterMethod.invoke(pojo);
+					if (fieldValue != null) {
+						if (noOfSetAdded == 0) {
+							query.append(" SET ");
+							noOfSetAdded++;
+						}
+						String tableName = mappingMap.get("Pojo to Table").get(className);
+						Validators.checkNull(tableName, "Mapping Error!");
+						String columnName = mappingMap.get(className + " Field to " + tableName + " Column").get(fieldName);
+						Validators.checkNull(columnName, "Mapping Error!");
+						query.append(tableName).append(".").append(columnName)
+								.append(" = ?, ");
+					}
 				}
-			} catch (IllegalAccessException e) {
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
 			}
 		}
@@ -96,6 +98,66 @@ public class DAOHelper {
 		query.setLength(query.length() - 2);
 
 		return query.toString();
+	}
+
+	public <T> int setFields(PreparedStatement statement, T pojo) throws CustomBankException {
+
+		Map<String, Method> getterMethodMap = getGettersMap(pojo);
+
+		Class<?> clazz = pojo.getClass();
+		int parameterIndex = 1;
+		List<Field> fields = getAllFields(clazz);
+		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
+
+		for (Field field : fields) {
+			String fieldName = field.getName();
+			Method getterMethod = getterMethodMap.get(fieldName);
+			if (getterMethod != null) {
+				try {
+					Object value = getterMethod.invoke(pojo);
+					if (value != null) {
+						statement.setObject(parameterIndex++, value);
+					}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+						| SQLException e) {
+					throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
+				}
+			}
+		}
+		return parameterIndex;
+	}
+
+	public <T> void addWhereConditions(StringBuilder query, T pojo) throws CustomBankException {
+		int noOfParametersToCheck = 0;
+		Class<?> clazz = pojo.getClass();
+		List<Field> fields = getAllFields(clazz);
+		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
+		Map<String, Method> gettersMap = getGettersMap(pojo);
+		for (Field field : fields) {
+			try {
+				String fieldName = field.getName();
+				Method getterMethod = gettersMap.get(fieldName);
+				if (getterMethod != null) {
+					Object fieldValue = getterMethod.invoke(pojo);
+					if (fieldValue != null) {
+						String className = getterMethod.getDeclaringClass().getSimpleName();
+						String tableName = mappingMap.get("Pojo to Table").get(className);
+						Validators.checkNull(tableName, "Mapping Error!");
+						String columnName = mappingMap.get(className + " Field to " + tableName + " Column").get(fieldName);
+						Validators.checkNull(columnName, "Mapping Error!");
+						if (noOfParametersToCheck == 0) {
+							query.append(" where ").append(tableName).append(".").append(columnName).append(" = ?");
+							noOfParametersToCheck++;
+						} else {
+							query.append(" and ").append(tableName).append(".").append(columnName).append(" = ?");
+							noOfParametersToCheck++;
+						}
+					}
+				}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
+			}
+		}
 	}
 
 	private List<Field> getAllFields(Class<?> clazz) {
@@ -110,73 +172,28 @@ public class DAOHelper {
 		return allFields;
 	}
 
-	public <T> int setFields(PreparedStatement statement, T pojo) throws CustomBankException {
-
-		Map<String, Method> getterMethodMap = getGettersMap(pojo);
-
-		Class<?> clazz = pojo.getClass();
-		int parameterIndex = 1;
-		List<Field> fields = getAllFields(clazz);
-		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
-
-		for (Field field : fields) {
-			field.setAccessible(true);
-			String fieldName = field.getName();
-			Method getterMethod = getterMethodMap.get(fieldName);
-			if (getterMethod != null) {
-				try {
-					Object value = getterMethod.invoke(pojo);
-					if (value != null) {
-						statement.setObject(parameterIndex++, value);
-					}
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
-						| SQLException e) {
-					e.printStackTrace();
-					throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
-				}
-			}
-		}
-		return parameterIndex;
-	}
-
 	private <T> Map<String, Method> getGettersMap(T pojo) {
 		Map<String, Method> getterMethodsMap = new HashMap<>();
 		Class<?> clazz = pojo.getClass();
 		Method[] methods = clazz.getMethods();
 		for (Method method : methods) {
-			String methodName = method.getName();
-			if (methodName.startsWith("get")) {
-				String fieldName = Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);
+			if (isGetter(method)) {
+				String fieldName = getFieldNameFromGetterOrSetter(method.getName());
 				getterMethodsMap.put(fieldName, method);
 			}
 		}
 		return getterMethodsMap;
 	}
 
-	public <T> void addWhereConditions(StringBuilder query, T pojo) throws CustomBankException{
-		int noOfParametersToCheck = 0;
-		Class<?> clazz = pojo.getClass();
-		List<Field> fields = getAllFields(clazz);
-		Collections.sort(fields, (a, b) -> a.getName().compareTo(b.getName()));
-		for (Field field : fields) {
-			field.setAccessible(true);
-			try {
-				String fieldName = field.getName();
-				Object fieldValue = field.get(pojo);
-				String tableName = field.getDeclaringClass().getSimpleName();
-				if (fieldValue != null) {
-					if(noOfParametersToCheck == 0) {
-						query.append(" where ").append(tableName).append(".").append(fieldName).append(" = ?");
-						noOfParametersToCheck++;
-					}
-					else {
-						query.append(" and ").append(tableName).append(".").append(fieldName).append(" = ?");
-						noOfParametersToCheck++;
-					}
-				}
-			} catch (IllegalAccessException e) {
-				throw new CustomBankException(CustomBankException.ERROR_OCCURRED, e);
-			}
-		}
+	private boolean isGetter(Method method) {
+		return method.getName().startsWith("get") && method.getParameterCount() == 0;
+	}
+	
+	private boolean isSetter(Method method) {
+		return method.getName().startsWith("set") && method.getParameterCount() == 1;
+	}
+
+	private String getFieldNameFromGetterOrSetter(String methodName) {
+		return Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);
 	}
 }

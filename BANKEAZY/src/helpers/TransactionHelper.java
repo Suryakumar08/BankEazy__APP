@@ -15,6 +15,12 @@ import utilities.Validators;
 
 public class TransactionHelper {
 
+	private static final double MIN_DEPOSIT = 1;
+	private static final double MAX_DEPOSIT = 10000.01;
+	private static final double MIN_WITHDRAW = 100;
+	private static final double MAX_WITHDRAW = 1000.01;
+	private static final double MIN_TRANSACTION_AMOUNT = 1;
+	private static final double MAX_TRANSACTION_AMOUNT = 10000.01;
 	private TransactionDaoInterface transactionDao = null;
 	private AccountHelper accHelper = null;
 
@@ -37,12 +43,14 @@ public class TransactionHelper {
 
 	// create
 	public long depositAmount(long accountNo, double amount) throws CustomBankException {
+		Validators.checkRangeBound(amount, TransactionHelper.MIN_DEPOSIT, TransactionHelper.MAX_DEPOSIT, "Invalid Deposit Amount!");
 		Transaction currTransaction = setSelfTransactionDetails(accountNo, amount);
 		currTransaction.setTypeFromEnum(TransactionType.DEPOSIT);
 		return makeBankTransaction(currTransaction, false);
 	}
 
 	public long withdrawAmount(long accountNo, double amount) throws CustomBankException {
+		Validators.checkRangeBound(amount, TransactionHelper.MIN_WITHDRAW, TransactionHelper.MAX_WITHDRAW, "Invalid Withdraw Amount!");
 		Transaction currTransaction = setSelfTransactionDetails(accountNo, amount);
 		currTransaction.setTypeFromEnum(TransactionType.WITHDRAW);
 		return makeBankTransaction(currTransaction, false);
@@ -63,7 +71,7 @@ public class TransactionHelper {
 		Transaction recipientTransaction = null;
 		Account currAccount = null;
 		Validators.checkNull(currTransaction);
-		Validators.checkRangeBound(currTransaction.getAmount(), 0, Double.MAX_VALUE, "Invalid Amount!");
+		Validators.checkRangeBound(currTransaction.getAmount(), TransactionHelper.MIN_TRANSACTION_AMOUNT, TransactionHelper.MAX_TRANSACTION_AMOUNT, "Invalid Amount!");
 
 		double currAmount = currTransaction.getAmount();
 		long currAccountNo = currTransaction.getAccountNo();

@@ -38,9 +38,9 @@ public class AccountHelper {
 	}
 
 	//read
-	public Map<Long, Account> getAccounts(int userId) throws CustomBankException {
+	public Map<Long, Account> getAccounts(int customerId) throws CustomBankException {
 		Account dummyAccount = new Account();
-		dummyAccount.setCustomerId(userId);
+		dummyAccount.setCustomerId(customerId);
 		Map<Long, Account> accountMap = accountDao.getAccounts(dummyAccount,10,0);
 		return accountMap;
 	}
@@ -60,6 +60,21 @@ public class AccountHelper {
 		return accountMap.get(accountNo);
 	}
 
+	
+	public Map<Integer, Map<Long,Account>> getCustomersAccounts() throws CustomBankException{
+		Map<Integer, Map<Long, Account>> customersAccounts = new HashMap<>();
+		for(Map.Entry<Long, Account> element : getAccounts(new Account()).entrySet()) {
+			Account currAccount = element.getValue();
+			int currCustomerId = currAccount.getCustomerId();
+			Map<Long, Account> custAccounts = customersAccounts.get(currCustomerId);
+			if(custAccounts == null) {
+				custAccounts = new HashMap<>();
+				customersAccounts.put(currCustomerId, custAccounts);
+			}
+			custAccounts.put(currAccount.getAccountNo(), currAccount);
+		}
+		return customersAccounts;
+	}
 	
 	public Map<Long, JSONObject> getAccountsWithBranch(Account account) throws CustomBankException{
 		Validators.checkNull(account);
@@ -83,6 +98,11 @@ public class AccountHelper {
 		Account account = new Account();
 		account.setAccountNo(accountNo);
 		account.setBalance(amount);
+		return accountDao.updateAccount(account);
+	}
+	
+	public boolean updateAccount(Account account) throws CustomBankException{
+		Validators.checkNull(account);
 		return accountDao.updateAccount(account);
 	}
 

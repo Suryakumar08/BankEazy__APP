@@ -38,7 +38,7 @@ public class UserHelper {
 		return user.getType();
 	}
 	
-	
+	//checking
 	public boolean checkPassword(String password, User user) throws CustomBankException {
 		if(!Sha_256.getHashedPassword(password).equals(user.getPassword())) {
 			throw new CustomBankException(CustomBankException.INVALID_PASSWORD);

@@ -1,8 +1,12 @@
 package model;
 
 import enums.AccountStatus;
+import exception.CustomBankException;
+import utilities.Validators;
 
 public class Account {
+	private static final double MIN_BALANCE = 0;
+	private static final double MAX_BALANCE = 999999999;
 	private Long accountNo;
 	private Integer customerId;
 	private Double balance;
@@ -23,7 +27,8 @@ public class Account {
 	public Double getBalance() {
 		return balance;
 	}
-	public void setBalance(double balance) {
+	public void setBalance(double balance) throws CustomBankException{
+		Validators.checkRangeBound(balance, Account.MIN_BALANCE, Account.MAX_BALANCE, "Invalid balance!");
 		this.balance = ((double)Math.round(balance * 100.0) / 100.0);
 	}
 	public Integer getBranchId() {
