@@ -107,6 +107,7 @@ public class AccountHelper {
 	}
 
 	
+	
 	//checking
 	public boolean isActiveBankAccount(Account account) throws CustomBankException{
 		if(account.getStatus() == 0) {

@@ -18,9 +18,9 @@ public class CustomerDAO implements CustomerDaoInterface {
 
 	private String dbName = "BankEazy";
 
-	private String insertUserQuery = "insert into User(name, password, mobile, gender, dob, status, type) values(?, ?, ?, ?, ?, ?, ?)";
+	private String insertUserQuery = "insert into User(name, password, phone, gender, dob, status, type) values(?, ?, ?, ?, ?, ?, ?)";
 	private String insertCustomerQuery = "insert into Customer values(?, ?, ?)";
-	private String getCustomerQuery = "select id, name, password, mobile, gender, dob, status, type, pan, aadhar from User join Customer on User.id = Customer.userId";
+	private String getCustomerQuery = "select id, name, password, phone, gender, dob, status, type, pan, aadhar from User join Customer on User.id = Customer.userId";
 
 	// create
 	@Override

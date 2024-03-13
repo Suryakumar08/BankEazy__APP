@@ -20,7 +20,7 @@ public class LoginPage {
 			
 			UserHelper helper = new UserHelper();
 			int type = helper.checkUserType(userId, password);
-			if(type == 1) {
+			if(type == 1 || type == 2) {
 				EmployeePage.run(userId);
 				break;
 			}

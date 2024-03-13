@@ -19,36 +19,48 @@ import yamlConvertor.YamlMapper;
 
 public class DAOHelper {
 
-	private static Map<String, Map<String, String>> mappingMap = null;
+	private static YamlMapper mapper = null;
+	
+	private static Map<String, Map<String, String>> classTableMap = null;
+	private static Map<String, Map<String, Map<String, String>>> columnFieldMap = null;
 
 	public DAOHelper() throws CustomBankException {
-		if (mappingMap == null) {
-			mappingMap = new YamlMapper().mapToObject("Mapping.yaml");
+		if(mapper == null) {
+			mapper = new YamlMapper();
+		}
+		if (classTableMap == null) {
+			classTableMap = mapper.getClassTableMap();
+		}
+		if (columnFieldMap == null) {
+			columnFieldMap = mapper.getFieldColumnMap();
 		}
 	}
 
 	public <T> T mapResultSetToGivenClassObject(ResultSet resultSet, Class<T> clazz, Map<String, Method> settersMap)
 			throws CustomBankException {
+		T givenClassInstance = null;
 		try {
-			T givenClassInstance = clazz.getDeclaredConstructor().newInstance();
-
+			givenClassInstance = clazz.getDeclaredConstructor().newInstance();
 			ResultSetMetaData metaData = resultSet.getMetaData();
 			int columnCount = metaData.getColumnCount();
 			for (int i = 1; i <= columnCount; i++) {
 				String tableName = metaData.getTableName(i);
-				String className = mappingMap.get("Table to Pojo").get(tableName);
+				String className = classTableMap.get("classToTable").get(tableName);
 				Validators.checkNull(className, "Mapping error!");
 				String columnName = metaData.getColumnName(i);
 				Object columnValue = resultSet.getObject(i);
-				String fieldName = mappingMap.get(tableName + " Column to " + className + " Field").get(columnName);
+				String fieldName = columnFieldMap.get(tableName).get("columnToField").get(columnName);
 				Validators.checkNull(fieldName, "Mapping Error!");
-				Validators.checkNull(settersMap.get(fieldName), "settermap fieldName get null");
 				settersMap.get(fieldName).invoke(givenClassInstance, columnValue);
 			}
-			return givenClassInstance;
-		} catch (Exception e) {
-			throw new CustomBankException("Error mapping ResultSet to " + clazz.getSimpleName(), e);
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | SQLException e) {
+			e.printStackTrace();
+			throw new CustomBankException("Error in mapping ResltSet to " + clazz.getSimpleName(), e);
 		}
+
+		return givenClassInstance;
+
 	}
 
 	public Map<String, Method> getSettersMap(Class<?> clazz) {
@@ -82,12 +94,11 @@ public class DAOHelper {
 							query.append(" SET ");
 							noOfSetAdded++;
 						}
-						String tableName = mappingMap.get("Pojo to Table").get(className);
+						String tableName = classTableMap.get("classToTable").get(className);
 						Validators.checkNull(tableName, "Mapping Error!");
-						String columnName = mappingMap.get(className + " Field to " + tableName + " Column").get(fieldName);
+						String columnName = columnFieldMap.get(tableName).get("fieldToColumn").get(fieldName);
 						Validators.checkNull(columnName, "Mapping Error!");
-						query.append(tableName).append(".").append(columnName)
-								.append(" = ?, ");
+						query.append(tableName).append(".").append(columnName).append(" = ?, ");
 					}
 				}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -141,9 +152,9 @@ public class DAOHelper {
 					Object fieldValue = getterMethod.invoke(pojo);
 					if (fieldValue != null) {
 						String className = getterMethod.getDeclaringClass().getSimpleName();
-						String tableName = mappingMap.get("Pojo to Table").get(className);
+						String tableName = classTableMap.get("classToTable").get(className);
 						Validators.checkNull(tableName, "Mapping Error!");
-						String columnName = mappingMap.get(className + " Field to " + tableName + " Column").get(fieldName);
+						String columnName = columnFieldMap.get(tableName).get("fieldToColumn").get(fieldName);
 						Validators.checkNull(columnName, "Mapping Error!");
 						if (noOfParametersToCheck == 0) {
 							query.append(" where ").append(tableName).append(".").append(columnName).append(" = ?");
@@ -188,7 +199,7 @@ public class DAOHelper {
 	private boolean isGetter(Method method) {
 		return method.getName().startsWith("get") && method.getParameterCount() == 0;
 	}
-	
+
 	private boolean isSetter(Method method) {
 		return method.getName().startsWith("set") && method.getParameterCount() == 1;
 	}

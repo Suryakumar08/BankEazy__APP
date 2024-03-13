@@ -3,6 +3,7 @@ package pages;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import enums.UserType;
 import exception.CustomBankException;
 import helpers.BranchHelper;
 import helpers.CustomerHelper;
@@ -26,7 +27,7 @@ public class EmployeePage {
 		BranchHelper branchHelper = new BranchHelper();
 		
 		Employee currEmployee = helper.getEmployee(userId);
-		int empRole = currEmployee.getRole();
+		int empRole = currEmployee.getType();
 		boolean continueProgram = true;
 		while (continueProgram) {
 			logger.info(
@@ -35,7 +36,7 @@ public class EmployeePage {
 				int employeeChoice = InputHelper.getInt();
 				switch (employeeChoice) {
 				case 1: {
-					if (empRole == 1) {
+					if (empRole == UserType.Admin.getType()) {
 						int newUserId = AddEmployeePage.run();
 						logger.fine("Employee Added Successfully!\nAdded User's Id : " + newUserId + "\n\n");
 					} else {
@@ -49,7 +50,7 @@ public class EmployeePage {
 				}
 				case 3: {
 					long accNo = 0l;
-					if (empRole == 1) {
+					if (empRole == UserType.Admin.getType()) {
 						accNo = AddAccountPage.run(0);
 					} else {
 						accNo = AddAccountPage.run(currEmployee.getBranchId());
@@ -62,7 +63,7 @@ public class EmployeePage {
 					break;
 				}
 				case 5: {
-					if (empRole == 1) {
+					if (empRole == UserType.Admin.getType()) {
 						Map<Integer, Employee> employees = helper.getEmployees(new Employee(), 50, 0);
 						Utilities.printObjects(employees);
 					} else {
@@ -71,7 +72,7 @@ public class EmployeePage {
 					break;
 				}
 				case 6:{
-					if(empRole == 1) {
+					if(empRole == UserType.Admin.getType()) {
 						logger.info("Enter Employee Id : ");
 						int employeeId = InputHelper.getInt();
 						Employee employee = helper.getEmployee(employeeId);
@@ -153,7 +154,7 @@ public class EmployeePage {
 					break;
 				}
 				case 13:{
-					if(empRole == 1) {
+					if(empRole == UserType.Admin.getType()) {
 						AddBranchPage.run();
 					}
 					else {
@@ -162,7 +163,7 @@ public class EmployeePage {
 					break;
 				}
 				case 14:{
-					if(empRole == 1) {
+					if(empRole == UserType.Admin.getType()) {
 						EditBranchPage.run();
 					}
 					else {

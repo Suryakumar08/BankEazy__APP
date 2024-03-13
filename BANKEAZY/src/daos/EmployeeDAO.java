@@ -20,7 +20,7 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 
 	private final String selectEmployeeQuery = "select * from User join Employee on User.id = Employee.userId";
 	private final String insertUserQuery = "insert into User(name, password, mobile, gender, dob, status, type) values(?, ?, ?, ?, ?, ?, ?)";
-	private final String insertEmployeeQuery = "insert into Employee values(?, ?, ?, ?, ?)";
+	private final String insertEmployeeQuery = "insert into Employee values(?, ?, ?, ?)";
 
 	// create
 	@Override
@@ -57,8 +57,6 @@ public class EmployeeDAO implements EmployeeDaoInterface {
 					statement1.setObject(2, employee.getSalary());
 					statement1.setObject(3, employee.getJoiningDate());
 					statement1.setObject(4, employee.getBranchId());
-					statement1.setObject(5, employee.getRole());
-
 					int noOfRows = statement1.executeUpdate();
 					connection.commit();
 					if (noOfRows == 0) {

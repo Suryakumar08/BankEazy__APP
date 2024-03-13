@@ -57,7 +57,6 @@ public class AddEmployeePage {
 				employee.setSalary(salary);
 				employee.setJoiningDate(Utilities.getCurrentTime());
 				employee.setBranchId(branchId);
-				employee.setRole(role);
 
 				newlyAddedId = helper.addEmployee(employee);
 				break;
